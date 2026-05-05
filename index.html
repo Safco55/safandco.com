@@ -542,7 +542,7 @@ not an isolated objective.</span>
       <p class="lede reveal delay-2" data-i18n="ins.lede">A regular analysis of markets, risks and opportunities — written for clients who think long-term.</p>
     </div>
     <div class="letters reveal">
-      <a class="letter" href="https://safandco-my.sharepoint.com/:b:/g/personal/js_safandco_com1/IQA-vbyLTnO2R7Rj4O9RzA81AatcyjsQXXSuGLF_hu5exOU?e=CvGbuI" target="_blank" rel="noopener noreferrer" data-letter="2026-04">
+      <a class="letter" href="#" id="open-letter-form" role="button" data-letter-url="https://safandco-my.sharepoint.com/:b:/g/personal/js_safandco_com1/IQA-vbyLTnO2R7Rj4O9RzA81AatcyjsQXXSuGLF_hu5exOU?e=CvGbuI" data-letter="2026-04">
         <div class="letter-date">April 2026</div>
         <div class="letter-title">
           <span>Strait of Hormuz... </span><em>The new bottleneck.</em>
@@ -789,7 +789,9 @@ window.I18N = {
         const original = btn.innerHTML;
         btn.innerHTML = '<span>Sending\u2026</span>'; btn.disabled = true;
         setTimeout(() => {
-          btn.innerHTML = '<span>Sent \u2014 check your inbox \u2192</span>';
+          btn.innerHTML = '<span>Sent \u2014 opening letter\u2026</span>';
+          const url = document.getElementById('open-letter-form') ? document.getElementById('open-letter-form').dataset.letterUrl : '';
+          if (url) window.open(url, '_blank');
           setTimeout(() => { btn.innerHTML = original; btn.disabled = false; letterForm.reset(); closeModal(); }, 2200);
         }, 700);
       });
