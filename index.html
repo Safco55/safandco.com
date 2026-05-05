@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SAF&amp;CO — Independent Wealth Management · Geneva</title>
+<meta name="description" content="Calm. Disciplined. Fully accountable. Independent wealth management from Geneva — managing international wealth through consistent decisions and clear responsibility.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* SAF&CO — Premium, sober, scroll-based site */
+:root{--navy:#14253F;--navy-soft:#1B2E4D;--navy-deep:#0E1B2F;--gold:#C8923A;--gold-soft:#D4A356;--ivory:#F6F2EA;--paper:#FBFAF6;--line:rgba(20,37,63,0.14);--line-strong:rgba(20,37,63,0.28);--line-light:rgba(255,255,255,0.18);--muted:rgba(20,37,63,0.62);--muted-light:rgba(255,255,255,0.62);--serif:'Cormorant Garamond','Times New Roman',serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;--mono:'IBM Plex Mono','Menlo',monospace;--container:1280px;--gutter:clamp(20px,4vw,56px);--section-pad-y:clamp(80px,12vh,140px);--headline-scale:1;--headline-tracking:-0.02em;--headline-weight:400;--italic-style:italic;--principle-pad:22px;--list-pad:28px}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:var(--sans);font-size:16px;line-height:1.6;color:var(--navy);background:var(--paper);-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
+a{color:inherit;text-decoration:none}img{max-width:100%;display:block}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:22px var(--gutter);transition:background 0.4s ease,border-color 0.4s ease,padding 0.3s ease;border-bottom:1px solid transparent}
+.nav.scrolled{background:rgba(251,250,246,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom-color:var(--line);padding:14px var(--gutter)}
+.nav.on-dark{color:var(--ivory)}.nav.on-dark.scrolled{background:rgba(14,27,47,0.85);border-bottom-color:var(--line-light);color:var(--ivory)}
+.nav-logo{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-size:24px;letter-spacing:0.08em;font-weight:500}
+.nav-logo .amp{color:var(--gold);font-style:italic;font-weight:400}
+.nav-right{display:flex;align-items:center;gap:36px}
+.nav-links{display:flex;gap:32px;list-style:none;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500}
+.nav-links a{position:relative;padding:4px 0;transition:opacity 0.2s}.nav-links a:hover{opacity:0.6}
+.lang-toggle{display:flex;align-items:center;gap:0;font-family:var(--mono);font-size:11px;letter-spacing:0.1em;border:1px solid currentColor;border-radius:999px;padding:2px;opacity:0.7}
+.lang-btn{background:transparent;border:none;color:inherit;cursor:pointer;padding:4px 10px;border-radius:999px;font-family:inherit;font-size:inherit;letter-spacing:inherit;transition:all 0.2s}
+.lang-btn.active{background:currentColor}.lang-btn.active span{color:var(--paper);mix-blend-mode:difference}
+.nav.on-dark .lang-btn.active{background:var(--ivory);color:var(--navy)}.nav:not(.on-dark) .lang-btn.active{background:var(--navy);color:var(--ivory)}
+.nav-toggle{display:none;background:none;border:none;color:inherit;cursor:pointer;font-family:var(--mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase}
+section.panel{position:relative;padding:var(--section-pad-y) var(--gutter);min-height:100vh;display:flex;flex-direction:column;justify-content:center;transition:padding 0.4s ease}
+.container{max-width:var(--container);margin:0 auto;width:100%}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:14px;margin-bottom:28px}
+.eyebrow::before{content:'';width:32px;height:1px;background:var(--gold)}
+h1,h2,h3{font-family:var(--serif);font-weight:var(--headline-weight);line-height:1.1;letter-spacing:var(--headline-tracking)}
+.headline-xl{font-size:calc(clamp(40px,6.4vw,92px) * var(--headline-scale));line-height:1.05;font-weight:var(--headline-weight);letter-spacing:var(--headline-tracking)}
+.headline-l{font-size:calc(clamp(34px,4.8vw,68px) * var(--headline-scale));line-height:1.08}
+.headline-m{font-size:calc(clamp(26px,3vw,40px) * var(--headline-scale));line-height:1.15}
+em.italic,.headline-xl em,.headline-l em,.headline-m em,.hero-content em,.pull-quote,.resp-statement em,.gov-header em,.history em,.insights-header em,.contact-left em,.letter-title em{font-style:var(--italic-style)}
+.lede{font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:var(--muted);max-width:56ch;font-weight:400}
+.on-dark .lede{color:var(--muted-light)}
+.hero-services{margin-top:36px;font-family:var(--mono);font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);display:flex;flex-wrap:wrap;align-items:center;gap:18px;padding-top:22px;border-top:1px solid var(--line);max-width:880px}
+.hero-services .hs-item{color:var(--navy)}.hero-services .hs-sep{color:var(--gold);opacity:0.7;font-style:italic;font-family:var(--serif);font-size:16px;letter-spacing:0;text-transform:none;line-height:1}
+#services{background:var(--paper);color:var(--navy);min-height:auto;padding-top:clamp(110px,14vh,160px);padding-bottom:clamp(110px,14vh,160px);border-bottom:1px solid var(--line);position:relative;overflow:hidden}
+#services::before{content:'';position:absolute;top:0;left:50%;width:1px;height:56px;background:linear-gradient(to bottom,var(--gold),transparent);transform:translateX(-50%);opacity:0.7}
+.services-inner{display:flex;flex-direction:column;align-items:flex-start}
+.services-manifesto{font-family:var(--serif);font-weight:400;font-size:clamp(28px,4.4vw,64px);line-height:1.12;letter-spacing:-0.015em;margin-top:8px;margin-bottom:56px;color:var(--navy);display:flex;flex-wrap:wrap;align-items:baseline;row-gap:8px;column-gap:clamp(14px,1.6vw,28px)}
+.services-manifesto .sm-item{white-space:nowrap}.services-manifesto .sm-item em{color:var(--gold);font-style:italic}
+.services-manifesto .sm-sep{color:var(--gold);font-style:italic;font-weight:300;opacity:0.85}
+.services-prose{max-width:62ch;display:flex;flex-direction:column;gap:18px;padding-top:32px;border-top:1px solid var(--line);margin-bottom:56px}
+.services-prose p{font-family:var(--serif);font-size:clamp(18px,1.6vw,23px);line-height:1.5;color:var(--navy);font-weight:400}
+.services-foot{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;font-family:var(--mono);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);padding-top:24px;border-top:1px solid var(--line);width:100%}
+.services-foot .sf-words{display:inline-flex;align-items:center;gap:14px;color:var(--navy)}
+.services-foot .sf-words > span:not(.sf-dot){font-family:var(--serif);font-style:italic;font-size:17px;letter-spacing:0;text-transform:none;color:var(--gold)}
+.services-foot .sf-dot{width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:0.6}
+.image-band{position:relative;background:var(--navy-deep);padding:0;overflow:hidden;border-top:1px solid var(--line-light);border-bottom:1px solid var(--line-light)}
+.ib-figure{position:relative;width:100%;height:clamp(260px,42vw,520px)}.ib-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.ib-caption{position:absolute;left:var(--gutter);right:var(--gutter);bottom:32px;display:flex;flex-direction:column;gap:10px;max-width:720px;color:var(--ivory)}
+.ib-tag{font-family:var(--mono);font-size:10px;letter-spacing:0.28em;text-transform:uppercase;color:var(--gold-soft);border:1px solid var(--gold-soft);align-self:flex-start;padding:6px 10px}
+.ib-text{font-family:var(--serif);font-style:italic;font-size:clamp(16px,1.6vw,22px);line-height:1.4;color:var(--ivory);opacity:0.9;max-width:50ch}
+#hero{background:var(--paper);color:var(--navy);min-height:100vh;overflow:hidden;border-bottom:1px solid var(--line)}
+#hero .eyebrow{color:var(--gold)}#hero .eyebrow::before{background:var(--gold)}
+#hero .hero-content .headline-xl em{color:var(--gold)}
+#hero .hero-mark{color:rgba(200,146,58,0.10)}#hero .hero-inner{display:grid;grid-template-columns:1fr;align-items:center;gap:0}
+.hero-mark{font-family:var(--serif);font-size:clamp(120px,22vw,280px);line-height:1;color:rgba(212,163,86,0.08);position:absolute;top:50%;right:var(--gutter);transform:translate3d(0,-50%,0);font-style:italic;pointer-events:none;user-select:none;will-change:transform}
+.hero-content{position:relative;z-index:2;max-width:1000px}.hero-content .headline-xl{margin-bottom:32px}
+.hero-content .headline-xl em{font-style:italic;color:var(--gold-soft);font-weight:400}
+.hero-meta{display:flex;align-items:center;gap:32px;margin-top:80px;font-family:var(--mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted-light)}
+.hero-meta .dot{width:4px;height:4px;border-radius:50%;background:var(--gold)}
+.scroll-indicator{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);font-family:var(--mono);font-size:10px;letter-spacing:0.3em;text-transform:uppercase;color:var(--muted-light);display:flex;flex-direction:column;align-items:center;gap:12px}
+.scroll-indicator .line{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollLine 2.4s ease-in-out infinite}
+@keyframes scrollLine{0%,100%{transform:scaleY(0.4);transform-origin:top;opacity:0.5}50%{transform:scaleY(1);opacity:1}}
+#performance{background:var(--paper)}
+.performance-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px);align-items:start}
+.performance-grid .col-left .headline-l{margin-bottom:32px}.performance-grid .col-left .headline-l em{color:var(--gold);font-style:italic}
+.principles-list{list-style:none;margin-top:48px}
+.principles-list li{padding:var(--principle-pad) 0;border-top:1px solid var(--line);display:grid;grid-template-columns:32px 1fr;gap:20px;align-items:baseline}
+.principles-list li:last-child{border-bottom:1px solid var(--line)}.principles-list .num{font-family:var(--mono);font-size:11px;letter-spacing:0.1em;color:var(--gold)}
+.principles-list .text{font-family:var(--serif);font-size:clamp(18px,1.6vw,24px);line-height:1.4}
+.pull-quote{font-family:var(--serif);font-style:italic;font-size:clamp(22px,2.2vw,32px);line-height:1.35;color:var(--navy);padding-left:24px;border-left:2px solid var(--gold);margin-top:48px}
+.latam-note{margin-top:64px;padding-top:24px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);display:flex;align-items:flex-start;gap:16px}
+.latam-note .tag{color:var(--gold);white-space:nowrap}.latam-note .copy{font-family:var(--sans);font-size:14px;letter-spacing:0;text-transform:none;line-height:1.5;color:var(--navy)}
+#responsibility{background:var(--ivory);position:relative}
+.resp-statement{font-family:var(--serif);font-size:clamp(36px,5vw,64px);line-height:1.1;margin-bottom:80px;max-width:22ch}
+.resp-statement em{color:var(--gold);font-style:italic}
+.resp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:64px;margin-top:64px}
+.resp-block{border-top:2px solid var(--navy);padding-top:28px}
+.resp-block .label{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;display:block}
+.resp-block h3{font-size:clamp(20px,1.8vw,26px);margin-bottom:14px;line-height:1.25}.resp-block p{font-size:15px;line-height:1.6;color:var(--muted)}
+#governance{background:var(--navy-deep);color:var(--ivory)}
+#governance .eyebrow{color:var(--gold-soft)}#governance .eyebrow::before{background:var(--gold-soft)}
+.gov-header{max-width:900px;margin-bottom:80px}.gov-header .headline-l em{color:var(--gold-soft);font-style:italic}
+.gov-cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px);margin-bottom:96px}
+.gov-card{position:relative;border:1px solid var(--line-light);border-left:3px solid var(--gold-soft);padding:56px 40px 40px;background:linear-gradient(180deg,rgba(212,163,86,0.04) 0%,rgba(255,255,255,0.02) 100%);transition:border-color 0.3s,transform 0.4s,box-shadow 0.4s}
+.gov-card:hover{border-left-color:var(--gold);transform:translateY(-3px);box-shadow:0 30px 80px -40px rgba(0,0,0,0.6)}
+.gov-card-num{position:absolute;top:28px;right:32px;font-family:var(--serif);font-style:italic;font-size:56px;line-height:1;color:var(--gold-soft);opacity:0.35;font-weight:400}
+.gov-card h3{font-size:clamp(24px,2vw,30px);margin-bottom:10px;color:var(--ivory);font-family:var(--serif);line-height:1.2}
+.gov-card-lede{font-family:var(--serif);font-style:italic;font-size:17px;color:var(--gold-soft);margin-bottom:28px;line-height:1.4}
+.gov-card ul{list-style:none;border-top:1px solid var(--line-light);padding-top:8px}
+.gov-card li{padding:16px 0;border-bottom:1px solid var(--line-light);display:flex;align-items:flex-start;gap:16px;font-size:14.5px;line-height:1.5;color:var(--ivory);opacity:0.9}
+.gov-card li:last-child{border-bottom:none}
+.gov-card li::before{content:'';width:10px;height:1px;background:var(--gold);margin-top:12px;flex-shrink:0}
+.gov-card li.has-popover{position:relative;cursor:default}
+.gov-card li.has-popover .pop{position:absolute;right:0;top:50%;transform:translateY(-50%) translateX(8px);opacity:0;pointer-events:none;transition:opacity 0.28s ease,transform 0.28s ease;display:inline-flex;align-items:center;justify-content:center;padding:8px 14px;background:rgba(255,255,255,0.04);border:1px solid var(--gold-soft);font-family:var(--mono);font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold-soft);white-space:nowrap}
+.gov-card li.has-popover:hover .pop{opacity:1;transform:translateY(-50%) translateX(0)}
+.gov-card li.has-popover .pop-bdo{padding:6px 12px;background:#fff;border-color:#fff}
+.gov-card li.has-popover .pop-bdo .pop-bdo-mark{font-family:var(--sans);font-weight:800;font-size:18px;color:#C8102E;text-transform:none}
+.gov-card li.has-popover .pop-bdo .pop-bdo-mark::after{content:'.';color:#C8102E}
+.history{display:grid;grid-template-columns:1fr 2fr;gap:clamp(40px,6vw,96px);align-items:start;padding-top:64px;border-top:1px solid var(--line-light)}
+.history .label{font-family:var(--mono);font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold-soft)}
+.history .body-text{font-family:var(--serif);font-size:clamp(20px,1.8vw,26px);line-height:1.4;color:var(--ivory)}
+.history .body-text em{color:var(--gold-soft);font-style:italic}
+#insights{background:var(--paper)}
+.insights-header{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,96px);align-items:end;margin-bottom:80px}
+.insights-header .lede{margin-top:24px}
+.letters{border-top:1px solid var(--line)}
+.letter{display:grid;grid-template-columns:100px 1fr auto auto;gap:32px;align-items:center;padding:var(--list-pad) 0;border-bottom:1px solid var(--line);cursor:pointer;transition:padding 0.3s ease;position:relative}
+.letter:hover{padding-left:16px}.letter:hover .letter-arrow{transform:translateX(6px)}
+.letter-date{font-family:var(--mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted)}
+.letter-title{font-family:var(--serif);font-size:clamp(20px,1.8vw,26px);line-height:1.3}
+.letter-title em{font-style:italic;color:var(--gold)}
+.letter-tag{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line-strong);padding:4px 10px;border-radius:2px}
+.letter-arrow{font-family:var(--mono);font-size:14px;color:var(--gold);transition:transform 0.3s ease}
+.letter-modal[hidden]{display:none}
+.letter-modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:24px}
+.lm-backdrop{position:absolute;inset:0;background:rgba(10,21,37,0.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.lm-dialog{position:relative;background:var(--paper);width:min(560px,100%);max-height:calc(100vh - 48px);overflow-y:auto;padding:clamp(32px,4vw,56px);border-top:2px solid var(--gold);box-shadow:0 32px 80px -20px rgba(0,0,0,0.4)}
+.lm-close{position:absolute;top:12px;right:16px;background:none;border:none;font-size:28px;line-height:1;color:var(--muted);cursor:pointer;padding:8px 12px}
+.lm-close:hover{color:var(--navy)}.lm-head{margin-bottom:28px}
+.lm-eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.lm-title{font-family:var(--serif);font-weight:400;font-size:clamp(22px,2.2vw,30px);line-height:1.2;color:var(--navy);margin-bottom:12px}
+.lm-title em{font-style:italic;color:var(--gold)}
+.lm-form .row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.lm-form .field{display:flex;flex-direction:column;gap:6px;margin-bottom:16px}
+.lm-form .field label{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted)}
+.lm-form .field input{font-family:var(--sans);font-size:15px;padding:10px 0;border:none;border-bottom:1px solid var(--line-strong);background:transparent;color:var(--navy);outline:none}
+.lm-form .field input:focus{border-bottom-color:var(--gold)}
+.lm-optin{display:grid;grid-template-columns:22px 1fr;gap:14px;margin:24px 0 12px;padding:18px;background:#F4EFE6;border-left:2px solid var(--gold);cursor:pointer;align-items:start}
+.lm-optin input[type="checkbox"]{position:absolute;opacity:0;pointer-events:none}
+.lm-checkbox{width:18px;height:18px;border:1px solid var(--line-strong);background:var(--paper);position:relative;margin-top:2px}
+.lm-optin input[type="checkbox"]:checked + .lm-checkbox{background:var(--gold);border-color:var(--gold)}
+.lm-optin input[type="checkbox"]:checked + .lm-checkbox::after{content:"";position:absolute;left:4px;top:0;width:6px;height:11px;border:solid var(--paper);border-width:0 2px 2px 0;transform:rotate(45deg)}
+.lm-optin-text{display:flex;flex-direction:column;gap:6px}
+.lm-optin-line{font-family:var(--sans);font-size:14.5px;font-weight:500;color:var(--navy);line-height:1.4}
+.lm-optin-help{font-family:var(--sans);font-size:12.5px;line-height:1.55;color:var(--muted);font-style:italic}
+.lm-submit{display:flex;align-items:center;gap:20px;margin-top:24px;flex-wrap:wrap}
+.lm-notice{font-family:var(--mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted)}
+#contact{background:var(--navy);color:var(--ivory)}
+#contact .eyebrow{color:var(--gold-soft)}#contact .eyebrow::before{background:var(--gold-soft)}
+.contact-layout{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(40px,6vw,120px);align-items:start}
+.contact-left .headline-l{margin-bottom:32px}.contact-left .headline-l em{color:var(--gold-soft);font-style:italic}
+.contact-left .lede{color:var(--muted-light);margin-bottom:64px}
+.coords{border-top:1px solid var(--line-light);padding-top:32px}
+.coords .row{display:grid;grid-template-columns:140px 1fr;gap:24px;padding:14px 0;font-size:14px;border-bottom:1px solid var(--line-light)}
+.coords .label{font-family:var(--mono);font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--gold-soft)}
+.coords .value{color:var(--ivory)}.coords a:hover{color:var(--gold-soft)}
+.form{border:1px solid var(--line-light);padding:40px 36px;background:rgba(255,255,255,0.02)}
+.form .field{display:block;margin-bottom:24px}
+.form .field label{display:block;font-family:var(--mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:8px}
+.form .field input,.form .field textarea{width:100%;background:transparent;border:none;border-bottom:1px solid var(--line-light);color:var(--ivory);font-family:var(--sans);font-size:15px;padding:8px 0 12px;outline:none;resize:vertical}
+.form .field input:focus,.form .field textarea:focus{border-bottom-color:var(--gold-soft)}
+.form .field textarea{min-height:100px}.form .row{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.form .row .field{margin-bottom:24px}
+.form-submit{display:flex;align-items:center;justify-content:space-between;margin-top:16px;gap:24px}
+.btn{background:var(--gold);color:var(--navy-deep);border:none;padding:16px 32px;font-family:var(--mono);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;cursor:pointer;transition:all 0.25s ease;display:inline-flex;align-items:center;gap:12px}
+.btn:hover{background:var(--gold-soft);transform:translateX(2px)}.btn .arrow{transition:transform 0.25s}.btn:hover .arrow{transform:translateX(4px)}
+.form-notice{font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted-light);line-height:1.6}
+footer{background:var(--navy-deep);color:var(--muted-light);padding:64px var(--gutter) 32px;border-top:1px solid var(--line-light)}
+.footer-inner{max-width:var(--container);margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid var(--line-light)}
+.footer-brand .logo-mark{font-family:var(--serif);font-size:28px;letter-spacing:0.06em;color:var(--ivory);margin-bottom:16px}
+.footer-brand .logo-mark .amp{color:var(--gold-soft);font-style:italic}
+.footer-brand p{font-size:13px;line-height:1.5;max-width:32ch}
+.footer-col h5{font-family:var(--mono);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:18px;font-weight:500}
+.footer-col ul{list-style:none}.footer-col li{padding:6px 0;font-size:13px}.footer-col a:hover{color:var(--ivory)}
+.footer-bottom{max-width:var(--container);margin:32px auto 0;display:flex;justify-content:space-between;align-items:center;font-family:var(--mono);font-size:10px;letter-spacing:0.18em;text-transform:uppercase}
+.footer-bottom .legal{display:flex;gap:28px}
+.finma-badge{display:inline-flex;align-items:center;gap:8px;padding:5px 10px;border:1px solid var(--line-light);border-radius:2px;color:var(--muted-light)}
+.finma-badge .dot{width:6px;height:6px;border-radius:50%;background:#6FCF97}
+#people{background:var(--navy);color:var(--ivory)}
+#people .eyebrow{color:var(--gold-soft)}#people .eyebrow::before{background:var(--gold-soft)}
+.people-header{max-width:880px;margin-bottom:80px}
+.people-header .headline-l{margin-bottom:24px}.people-header .headline-l em{color:var(--gold-soft);font-style:italic}
+.people-header .lede{margin-top:8px;color:var(--muted-light)}
+.firm-tier{margin-top:56px;padding-top:28px;border-top:1px solid var(--line-light)}
+.firm-tier-label{font-family:var(--mono);font-size:12px;letter-spacing:0.24em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:28px;display:inline-flex;align-items:center;gap:14px}
+.firm-tier-label::before{content:'';display:inline-block;width:28px;height:1px;background:var(--gold-soft)}
+.firm-list{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0;border-top:1px solid rgba(255,255,255,0.08)}
+.firm-list li{padding:22px 0;border-bottom:1px solid rgba(255,255,255,0.08);display:flex;flex-direction:column;gap:6px;padding-right:32px}
+.firm-list li:nth-child(odd){padding-left:0}.firm-list li:nth-child(even){padding-left:32px;border-left:1px solid rgba(255,255,255,0.08)}
+.firm-list-board{grid-template-columns:repeat(3,minmax(0,1fr))}
+.firm-list-board li{padding:28px 24px 28px 0;align-items:flex-start;gap:8px}
+.firm-list-board li:nth-child(odd),.firm-list-board li:nth-child(even){padding-left:0;border-left:none}
+.firm-list-board li + li{padding-left:24px;border-left:1px solid rgba(255,255,255,0.08)}
+.firm-bio{display:block;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,0.08);font-family:var(--serif);font-size:14.5px;line-height:1.55;color:var(--muted-light);width:100%}
+.firm-name{display:block;font-family:var(--serif);font-size:clamp(20px,1.8vw,24px);font-weight:500;line-height:1.15;color:var(--ivory)}
+.firm-role{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted-light);line-height:1.5}
+.people-footer{margin-top:80px;padding-top:32px;border-top:1px solid rgba(255,255,255,0.10);font-family:var(--serif);font-style:italic;font-size:18px;color:var(--muted-light);max-width:720px}
+.gov-pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-bottom:96px;border-top:1px solid var(--line-light);border-bottom:1px solid var(--line-light)}
+.gov-pillar{padding:40px 32px 40px 0;display:flex;flex-direction:column;gap:14px}
+.gov-pillar + .gov-pillar{padding-left:32px;border-left:1px solid var(--line-light)}
+.gov-pillar .gp-num{font-family:var(--serif);font-style:italic;font-size:18px;color:var(--gold-soft)}
+.gov-pillar .gp-title{font-family:var(--serif);font-weight:400;font-size:clamp(20px,1.8vw,26px);line-height:1.2;color:var(--ivory)}
+.gov-pillar .gp-body{font-size:14.5px;line-height:1.6;color:var(--muted-light);max-width:36ch}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.9s ease,transform 0.9s ease}
+.reveal.in{opacity:1;transform:translateY(0)}.reveal.delay-1{transition-delay:0.1s}.reveal.delay-2{transition-delay:0.22s}.reveal.delay-3{transition-delay:0.34s}.reveal.delay-4{transition-delay:0.46s}
+@media(max-width:900px){.nav-links{display:none}.nav-toggle{display:block}.performance-grid{grid-template-columns:1fr;gap:48px}.resp-grid{grid-template-columns:1fr;gap:40px}.gov-cols{grid-template-columns:1fr;gap:32px}.history{grid-template-columns:1fr;gap:24px}.insights-header{grid-template-columns:1fr;gap:24px}.letter{grid-template-columns:80px 1fr auto;gap:16px}.letter-tag{display:none}.contact-layout{grid-template-columns:1fr;gap:48px}.form .row{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr 1fr;gap:32px}.footer-bottom{flex-direction:column;gap:16px;align-items:flex-start}.gov-pillars{grid-template-columns:1fr}.gov-pillar{padding:28px 0;border-bottom:1px solid var(--line-light)}.gov-pillar:last-child{border-bottom:none}.gov-pillar + .gov-pillar{padding-left:0;border-left:none}.firm-list-board{grid-template-columns:1fr}.firm-list-board li,.firm-list-board li + li{padding-left:0;padding-right:0;border-left:none}}
+@media(max-width:720px){.hero-services{gap:10px 14px;font-size:11px}.hero-services .hs-sep{display:none}.services-manifesto{font-size:clamp(26px,7vw,38px);flex-direction:column;align-items:flex-start}.services-manifesto .sm-sep{display:none}}
+@media(max-width:760px){.firm-list{grid-template-columns:1fr}.firm-list li:nth-child(even){padding-left:0;border-left:none}}
+@media(max-width:600px){.lm-form .row{grid-template-columns:1fr}.lm-dialog{padding:32px 24px}}
+@media(max-width:560px){.footer-inner{grid-template-columns:1fr}.hero-meta{flex-wrap:wrap;gap:16px;margin-top:48px}.form-submit{flex-direction:column;align-items:flex-start}.form{padding:28px 22px}}
+
+</style>
+</head>
+<body data-mood="midnight" data-voice="editorial" data-density="standard">
+<nav class="nav" id="nav">
+  <a href="#hero" class="nav-logo"><span>SAF<span class="amp">&amp;</span>CO</span></a>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#services" data-i18n="nav.services">Services</a></li>
+      <li><a href="#people" data-i18n="nav.people">The Firm</a></li>
+      <li><a href="#governance" data-i18n="nav.governance">Governance</a></li>
+      <li><a href="#performance" data-i18n="nav.approach">Approach</a></li>
+      <li><a href="#insights" data-i18n="nav.insights">Insights</a></li>
+      <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <div class="lang-toggle" role="tablist" aria-label="Language">
+      <button class="lang-btn active" data-lang="en" aria-pressed="true"><span>EN</span></button>
+      <button class="lang-btn" data-lang="pt" aria-pressed="false"><span>PT</span></button>
+    </div>
+    <button class="nav-toggle" aria-label="Menu">Menu</button>
+  </div>
+</nav>
+
+<section class="panel" id="hero">
+  <div class="hero-mark" aria-hidden="true">&amp;</div>
+  <div class="container hero-inner">
+    <div class="hero-content">
+      <div class="eyebrow reveal in" data-i18n="hero.eyebrow">SAF&amp;CO · Geneva · 30+ years of legacy</div>
+      <h1 class="headline-xl reveal delay-1 in">
+        <span data-i18n="hero.title.1">Serious wealth management</span><br>
+        <span data-i18n="hero.title.2">requires </span><em data-i18n="hero.title.3">discipline</em><span data-i18n="hero.title.4">, not noise.</span>
+      </h1>
+      <p class="lede reveal delay-2 in" data-i18n="hero.lede">We manage international wealth through consistent decisions and clear responsibility.</p>
+      <div class="hero-services reveal delay-3 in" aria-label="Services">
+        <span class="hs-item" data-i18n="hero.services.1">Investments</span>
+        <span class="hs-sep" aria-hidden="true">—</span>
+        <span class="hs-item" data-i18n="hero.services.2">Wealth Planning &amp; Structuring</span>
+        <span class="hs-sep" aria-hidden="true">—</span>
+        <span class="hs-item" data-i18n="hero.services.3">Family Office</span>
+      </div>
+      <div class="hero-meta reveal delay-3 in">
+        <span data-i18n="hero.meta.1">Calm.</span><span class="dot"></span>
+        <span data-i18n="hero.meta.2">Disciplined.</span><span class="dot"></span>
+        <span data-i18n="hero.meta.3">Fully accountable.</span>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <span data-i18n="hero.scroll">Scroll</span>
+    <span class="line"></span>
+  </div>
+</section>
+
+<section class="panel panel-services" id="services">
+  <div class="container services-inner">
+    <div class="eyebrow reveal" data-i18n="svc.eyebrow">01 — What we do</div>
+    <h2 class="services-manifesto reveal delay-1">
+      <span class="sm-item" data-i18n="svc.pillar.1">Investments</span>
+      <span class="sm-sep" aria-hidden="true">—</span>
+      <span class="sm-item"><span data-i18n="svc.pillar.2a">Wealth Planning</span> <em>&amp;</em> <span data-i18n="svc.pillar.2b">Structuring</span></span>
+      <span class="sm-sep" aria-hidden="true">—</span>
+      <span class="sm-item" data-i18n="svc.pillar.3">Family Office</span>
+    </h2>
+    <div class="services-prose reveal delay-2">
+      <p data-i18n="svc.prose.1">Three disciplines, one practice — shaped tailor-made to the life you have built and the one you intend to leave behind.</p>
+      <p data-i18n="svc.prose.2">The point of working with us is not a product. It is the quiet certainty that your wealth is held with intention — managed, structured and watched over so that what you have can endure, prosper, and free your mind to live the rest.</p>
+    </div>
+    <div class="services-foot reveal delay-3">
+      <span class="sf-tag" data-i18n="svc.foot.tag">For those who measure success in</span>
+      <span class="sf-words">
+        <span data-i18n="svc.foot.w1">tranquility</span>
+        <span class="sf-dot" aria-hidden="true"></span>
+        <span data-i18n="svc.foot.w2">continuity</span>
+        <span class="sf-dot" aria-hidden="true"></span>
+        <span data-i18n="svc.foot.w3">prosperity</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<section class="panel on-dark" id="people">
+  <div class="container">
+    <div class="people-header">
+      <div class="eyebrow reveal" data-i18n="people.eyebrow">02 — The Firm</div>
+      <h2 class="headline-l reveal delay-1">
+        <span data-i18n="people.title.1">Built over time, </span><em data-i18n="people.title.2">not engineered overnight</em><span data-i18n="people.title.3">.</span>
+      </h2>
+      <p class="lede reveal delay-2" data-i18n="people.lede">Saf &amp; Co was founded by senior bankers with deep roots in Geneva private banking. We never grow faster than the trust placed in us.</p>
+    </div>
+    <div class="firm-tier reveal">
+      <div class="firm-tier-label" data-i18n="people.partners.label">Founding Partners</div>
+      <ul class="firm-list firm-list-partners">
+        <li>
+          <span class="firm-name">Alberto Safdie</span>
+          <span class="firm-role" data-i18n="people.partners.p1.role">Founding Partner</span>
+        </li>
+        <li>
+          <span class="firm-name">Mauricio Safdie</span>
+          <span class="firm-role" data-i18n="people.partners.p2.role">Founding Partner · Board Member</span>
+        </li>
+      </ul>
+    </div>
+    <div class="firm-tier reveal delay-1">
+      <div class="firm-tier-label" data-i18n="people.board.label">Board of Directors</div>
+      <ul class="firm-list firm-list-board">
+        <li>
+          <span class="firm-name">Dominique Paladini</span>
+          <span class="firm-role" data-i18n="people.board.b1.role">Chairman of the Board · Independent Director</span>
+          <p class="firm-bio" data-i18n="people.board.b1.bio">[ Two-line biography — career highlights, current mandates, and what he brings to the board's oversight. ]</p>
+        </li>
+        <li>
+          <span class="firm-name">René Sieber</span>
+          <span class="firm-role" data-i18n="people.board.b2.role">Independent Director</span>
+          <p class="firm-bio" data-i18n="people.board.b2.bio">[ Two-line biography — career highlights, current mandates, and what he brings to the board's oversight. ]</p>
+        </li>
+        <li>
+          <span class="firm-name">Markus Hauser</span>
+          <span class="firm-role" data-i18n="people.board.b3.role">Independent Director</span>
+          <p class="firm-bio" data-i18n="people.board.b3.bio">[ Two-line biography — career highlights, current mandates, and what he brings to the board's oversight. ]</p>
+        </li>
+      </ul>
+    </div>
+    <div class="people-footer reveal delay-2">
+      <span class="people-note" data-i18n="people.footer">A small firm, by design. Senior people, clear roles, shared accountability.</span>
+    </div>
+  </div>
+</section>
+
+<section class="panel on-dark" id="governance">
+  <div class="container">
+    <div class="gov-header">
+      <div class="eyebrow reveal" data-i18n="gov.eyebrow">03 — Governance</div>
+      <h2 class="headline-l reveal delay-1">
+        <span data-i18n="gov.title.1">Our governance is designed to </span><em data-i18n="gov.title.2">protect clients</em><span data-i18n="gov.title.3">.</span>
+      </h2>
+    </div>
+    <div class="gov-pillars stats-lead">
+      <div class="gov-pillar reveal delay-1">
+        <span class="gp-num">i.</span>
+        <h3 class="gp-title" data-i18n="gov.pillar1.title">Investment Committee</h3>
+        <p class="gp-body" data-i18n="gov.pillar1.body">Every allocation is debated, challenged and signed off by an experienced committee of senior partners. No solo calls, no shortcuts.</p>
+      </div>
+      <div class="gov-pillar reveal delay-2">
+        <span class="gp-num">ii.</span>
+        <h3 class="gp-title" data-i18n="gov.pillar2.title">Independently watched</h3>
+        <p class="gp-body" data-i18n="gov.pillar2.body">FINMA-regulated, audited by BDO, and supervised in risk and compliance by Claritis. We invite the scrutiny.</p>
+      </div>
+      <div class="gov-pillar reveal delay-3">
+        <span class="gp-num">iii.</span>
+        <h3 class="gp-title" data-i18n="gov.pillar3.title">Direct access, always</h3>
+        <p class="gp-body" data-i18n="gov.pillar3.body">No layers. No call centres. The person managing your wealth is the person who answers when you call.</p>
+      </div>
+    </div>
+    <div class="gov-cols">
+      <div class="gov-card reveal">
+        <span class="gov-card-num">01</span>
+        <h3 data-i18n="gov.card1.title">Regulatory framework</h3>
+        <p class="gov-card-lede" data-i18n="gov.card1.lede">External, independent, continuous.</p>
+        <ul>
+          <li data-i18n="gov.card1.li1">Regulated as an asset manager (FINMA)</li>
+          <li class="has-popover" data-popover="claritis"><span data-i18n="gov.card1.li2">Independent risk &amp; compliance oversight</span><span class="pop pop-text">CLARITIS</span></li>
+          <li class="has-popover" data-popover="bdo"><span data-i18n="gov.card1.li3">Regular prudential and financial audits</span><span class="pop pop-bdo"><span class="pop-bdo-mark">BDO</span></span></li>
+          <li data-i18n="gov.card1.li4">Decisions are overseen, challenged and verified</li>
+        </ul>
+      </div>
+      <div class="gov-card reveal delay-1">
+        <span class="gov-card-num">02</span>
+        <h3 data-i18n="gov.card2.title">Firm &amp; structure</h3>
+        <p class="gov-card-lede" data-i18n="gov.card2.lede">Senior people, clear roles, shared accountability.</p>
+        <ul>
+          <li data-i18n="gov.card2.li1">A small firm of senior partners</li>
+          <li data-i18n="gov.card2.li2">Clear roles, shared responsibility</li>
+          <li data-i18n="gov.card2.li3">Senior investment professionals only</li>
+          <li data-i18n="gov.card2.li4">Direct access to decision-makers, always</li>
+        </ul>
+      </div>
+    </div>
+    <div class="history reveal">
+      <span class="label" data-i18n="gov.history.label">A track record</span>
+      <p class="body-text">
+        <span data-i18n="gov.history.body.1">Saf &amp; Co was </span><em data-i18n="gov.history.body.2">built over time</em><span data-i18n="gov.history.body.3"> — not engineered overnight. Long-term thinking is not a slogan. It is a culture.</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="panel" id="performance">
+  <div class="container">
+    <div class="performance-grid">
+      <div class="col-left">
+        <div class="eyebrow reveal" data-i18n="perf.eyebrow">04 — Performance &amp; Discipline</div>
+        <h2 class="headline-l reveal delay-1">
+          <span data-i18n="perf.title.1">Performance is a </span><em data-i18n="perf.title.2">consequence</em><span data-i18n="perf.title.3">,
+not an isolated objective.</span>
+        </h2>
+        <div class="pull-quote reveal delay-2" data-i18n="perf.quote">What some call luck is often the result of consistency, monitoring and discipline.</div>
+      </div>
+      <div class="col-right">
+        <p class="body reveal" data-i18n="perf.body.1">Markets fluctuate. Cycles change. Emotions destroy capital.</p>
+        <p class="body reveal delay-1" style="margin-top:18px;" data-i18n="perf.body.2">Our role is to make sound decisions, consistently, with risks we understand and control.</p>
+        <ol class="principles-list reveal delay-2">
+          <li><span class="num">01</span><span class="text" data-i18n="perf.principle.1">Discipline over timing.</span></li>
+          <li><span class="num">02</span><span class="text" data-i18n="perf.principle.2">Risk management over narratives.</span></li>
+          <li><span class="num">03</span><span class="text" data-i18n="perf.principle.3">Consistency over short-term reactions.</span></li>
+        </ol>
+        <div class="latam-note reveal delay-3">
+          <span class="tag">LATAM</span>
+          <span class="copy" data-i18n="perf.latam">We have developed particular expertise in serving clients from Latin America navigating international markets.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="image-band" aria-hidden="false">
+  <div class="ib-figure">
+    <svg class="ib-svg" viewBox="0 0 1600 520" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Geneva — Lake Geneva with the Jet d'Eau, Old Town and the Alps">
+      <defs>
+        <linearGradient id="ibSky" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#0B1729"/><stop offset="55%" stop-color="#0E1B2F"/><stop offset="100%" stop-color="#101F36"/></linearGradient>
+        <linearGradient id="ibLake" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#0E1B2F"/><stop offset="100%" stop-color="#070E1B"/></linearGradient>
+        <linearGradient id="ibJet" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#C8923A" stop-opacity="0"/><stop offset="20%" stop-color="#C8923A" stop-opacity="0.45"/><stop offset="100%" stop-color="#C8923A" stop-opacity="0.85"/></linearGradient>
+        <radialGradient id="ibSun" cx="0.78" cy="0.42" r="0.18"><stop offset="0%" stop-color="#C8923A" stop-opacity="0.35"/><stop offset="100%" stop-color="#C8923A" stop-opacity="0"/></radialGradient>
+        <linearGradient id="ibFade" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#0E1B2F" stop-opacity="0"/><stop offset="80%" stop-color="#0E1B2F" stop-opacity="0"/><stop offset="100%" stop-color="#0E1B2F" stop-opacity="0.85"/></linearGradient>
+      </defs>
+      <rect width="1600" height="340" fill="url(#ibSky)"/>
+      <rect width="1600" height="340" fill="url(#ibSun)"/>
+      <path d="M0,300 L120,230 L210,260 L300,200 L420,250 L520,210 L640,260 L780,220 L900,255 L1040,205 L1160,245 L1300,215 L1420,250 L1520,225 L1600,245 L1600,340 L0,340 Z" fill="#152744" opacity="0.85"/>
+      <path d="M0,310 L80,275 L180,300 L290,255 L400,290 L520,265 L660,300 L820,265 L960,295 L1100,265 L1240,295 L1380,270 L1500,295 L1600,280 L1600,340 L0,340 Z" fill="#1B304F"/>
+      <path d="M0,322 L100,305 L200,322 L320,295 L460,322 L600,300 L740,325 L880,300 L1020,325 L1180,300 L1320,322 L1460,305 L1600,322 L1600,340 L0,340 Z" fill="#22395C"/>
+      <line x1="0" y1="340" x2="1600" y2="340" stroke="#2A4670" stroke-width="1" opacity="0.7"/>
+      <g fill="#0A1525">
+        <rect x="0" y="316" width="1600" height="6"/>
+        <path d="M0,316 L0,300 L40,300 L40,288 L92,288 L92,302 L140,302 L140,290 L196,290 L196,300 L246,300 L246,284 L300,284 L300,294 L348,294 L348,278 L398,278 L398,288 L450,288 L450,272 L508,272 L508,286 L560,286 L560,268 L605,268 L605,278 L655,278 L655,260 L700,260 L700,272 L745,272 L745,255 L790,255 L790,248 L820,248 L820,228 L832,228 L832,205 L840,205 L840,180 L848,180 L848,205 L856,205 L856,228 L868,228 L868,248 L905,248 L905,260 L948,260 L948,272 L990,272 L990,258 L1040,258 L1040,272 L1090,272 L1090,260 L1140,260 L1140,278 L1190,278 L1190,265 L1240,265 L1240,280 L1290,280 L1290,272 L1340,272 L1340,290 L1395,290 L1395,278 L1445,278 L1445,294 L1500,294 L1500,286 L1550,286 L1550,300 L1600,300 L1600,316 Z"/>
+      </g>
+      <g fill="#0A1525" stroke="#C8923A" stroke-opacity="0.28" stroke-width="0.75">
+        <polygon points="822,180 828,156 834,180"/>
+        <polygon points="846,180 852,148 858,180"/>
+        <polygon points="836,205 840,168 844,205"/>
+      </g>
+      <g fill="#C8923A" opacity="0.55">
+        <rect x="62" y="294" width="1.5" height="2"/><rect x="118" y="296" width="1.5" height="2"/><rect x="172" y="294" width="1.5" height="2"/><rect x="220" y="290" width="1.5" height="2"/><rect x="278" y="288" width="1.5" height="2"/><rect x="324" y="284" width="1.5" height="2"/><rect x="376" y="282" width="1.5" height="2"/><rect x="426" y="278" width="1.5" height="2"/><rect x="482" y="276" width="1.5" height="2"/><rect x="536" y="272" width="1.5" height="2"/><rect x="582" y="268" width="1.5" height="2"/><rect x="630" y="264" width="1.5" height="2"/><rect x="678" y="262" width="1.5" height="2"/><rect x="722" y="258" width="1.5" height="2"/><rect x="772" y="252" width="1.5" height="2"/><rect x="922" y="254" width="1.5" height="2"/><rect x="970" y="262" width="1.5" height="2"/><rect x="1018" y="266" width="1.5" height="2"/>
+      </g>
+      <rect y="340" width="1600" height="180" fill="url(#ibLake)"/>
+      <g stroke="#2A4670" stroke-width="0.6" fill="none">
+        <line x1="40" y1="356" x2="1560" y2="356" opacity="0.55"/><line x1="20" y1="368" x2="1580" y2="368" opacity="0.45"/><line x1="60" y1="380" x2="1540" y2="380" opacity="0.5"/><line x1="0" y1="392" x2="1600" y2="392" opacity="0.4"/><line x1="80" y1="404" x2="1520" y2="404" opacity="0.45"/>
+      </g>
+      <g>
+        <ellipse cx="1090" cy="356" rx="14" ry="3" fill="#C8923A" opacity="0.4"/>
+        <path d="M1086,358 Q1088,260 1086,160 Q1090,100 1094,160 Q1092,260 1094,358 Z" fill="url(#ibJet)"/>
+        <ellipse cx="1090" cy="148" rx="9" ry="14" fill="#C8923A" opacity="0.18"/>
+      </g>
+      <rect width="1600" height="520" fill="url(#ibFade)"/>
+    </svg>
+    <div class="ib-caption">
+      <span class="ib-tag" data-i18n="band.tag">Geneva · Lake &amp; Old Town</span>
+      <span class="ib-text" data-i18n="band.caption">From Cours de Rive, the lake, the Jet d’Eau and the spires of Saint-Pierre — the city we have called home for over thirty years.</span>
+    </div>
+  </div>
+</section>
+
+<section class="panel" id="responsibility">
+  <div class="container">
+    <div class="eyebrow reveal" data-i18n="resp.eyebrow">05 — Responsibility &amp; Client Interest</div>
+    <h2 class="resp-statement reveal delay-1">
+      <span data-i18n="resp.title.1">Full responsibility means full </span><em data-i18n="resp.title.2">commitment</em><span data-i18n="resp.title.3">.</span>
+    </h2>
+    <div class="resp-grid">
+      <div class="resp-block reveal">
+        <span class="label">Decisions</span>
+        <h3 data-i18n="resp.block1.title">We decide. We assume. We answer.</h3>
+        <p data-i18n="resp.block1.body">We make decisions, we assume them, and we answer for them — across all market conditions. No deflection. No hedging behind market noise.</p>
+      </div>
+      <div class="resp-block reveal delay-1">
+        <span class="label">Alignment</span>
+        <h3 data-i18n="resp.block2.title">Solely in our clients' interest.</h3>
+        <p data-i18n="resp.block2.body">We invest on behalf of our clients — and solely in their interest. No retrocessions kept silently. No conflicts left unspoken.</p>
+      </div>
+      <div class="resp-block reveal delay-2">
+        <span class="label">Approach</span>
+        <h3 data-i18n="resp.block3.title">Fundamentally traditional.</h3>
+        <p data-i18n="resp.block3.body">Disciplined allocation, risk management, long-term thinking. Our default is the proven, not the popular.</p>
+      </div>
+      <div class="resp-block reveal delay-3">
+        <span class="label">Selectively bold</span>
+        <h3 data-i18n="resp.block4.title">Opportunistic.</h3>
+        <p data-i18n="resp.block4.body">We seek out investment opportunities others overlook — across asset classes, geographies and structures — and act only when conviction, risk and reward align.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="panel" id="insights">
+  <div class="container">
+    <div class="insights-header">
+      <div>
+        <div class="eyebrow reveal" data-i18n="ins.eyebrow">06 — Insights · Monthly Letter</div>
+        <h2 class="headline-l reveal delay-1">
+          <span data-i18n="ins.title.1">Our </span><em data-i18n="ins.title.2">thinking</em><span data-i18n="ins.title.3">, this month.</span>
+        </h2>
+      </div>
+      <p class="lede reveal delay-2" data-i18n="ins.lede">A regular analysis of markets, risks and opportunities — written for clients who think long-term.</p>
+    </div>
+    <div class="letters reveal">
+      <a class="letter" href="#" data-letter="2026-04" id="open-letter-form" role="button">
+        <div class="letter-date" data-i18n="ins.latest.date">April 2026</div>
+        <div class="letter-title">
+          <span data-i18n="ins.latest.t1">When the cycle turns: </span><em data-i18n="ins.latest.t2">positioning for what we do not yet see.</em>
+        </div>
+        <div class="letter-tag" data-i18n="ins.latest.tag">Macro &amp; Investments</div>
+        <div class="letter-arrow" data-i18n="ins.latest.arrow">→ Read</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="letter-modal" id="letter-modal" role="dialog" aria-modal="true" aria-labelledby="letter-modal-title" hidden>
+  <div class="lm-backdrop" data-close-modal=""></div>
+  <div class="lm-dialog" role="document">
+    <button type="button" class="lm-close" aria-label="Close" data-close-modal="">×</button>
+    <div class="lm-head">
+      <div class="lm-eyebrow" data-i18n="ins.modal.eyebrow">Monthly Letter · April 2026</div>
+      <h3 class="lm-title" id="letter-modal-title">
+        <span data-i18n="ins.modal.t1">A few details before you </span><em data-i18n="ins.modal.t2">read on</em><span data-i18n="ins.modal.t3">.</span>
+      </h3>
+    </div>
+    <form class="lm-form" id="letter-form" novalidate>
+      <div class="row">
+        <div class="field"><label for="lm-firstname" data-i18n="ins.modal.first">First name</label><input type="text" id="lm-firstname" name="firstname" autocomplete="given-name" required></div>
+        <div class="field"><label for="lm-lastname" data-i18n="ins.modal.last">Last name</label><input type="text" id="lm-lastname" name="lastname" autocomplete="family-name" required></div>
+      </div>
+      <div class="field"><label for="lm-email" data-i18n="ins.modal.email">Email</label><input type="email" id="lm-email" name="email" autocomplete="email" required></div>
+      <label class="lm-optin">
+        <input type="checkbox" id="lm-optin" name="optin">
+        <span class="lm-checkbox" aria-hidden="true"></span>
+        <span class="lm-optin-text">
+          <span class="lm-optin-line" data-i18n="ins.modal.optin.line">Send me future monthly letters by email.</span>
+          <span class="lm-optin-help" data-i18n="ins.modal.optin.help">Leave unchecked and you will not be added to any mailing list. We will only send you this letter, once.</span>
+        </span>
+      </label>
+      <div class="lm-submit">
+        <button type="submit" class="btn"><span data-i18n="ins.modal.submit">Send me the letter</span><span class="arrow">→</span></button>
+        <span class="lm-notice" data-i18n="ins.modal.notice">Confidential · We never share your details</span>
+      </div>
+    </form>
+  </div>
+</div>
+
+<section class="panel on-dark" id="contact">
+  <div class="container">
+    <div class="contact-layout">
+      <div class="contact-left">
+        <div class="eyebrow reveal" data-i18n="contact.eyebrow">07 — Start a conversation</div>
+        <h2 class="headline-l reveal delay-1">
+          <span data-i18n="contact.title.1">We are </span><em data-i18n="contact.title.2">selective</em><span data-i18n="contact.title.3"> in how we work, and </span><em data-i18n="contact.title.4">precise</em><span data-i18n="contact.title.5"> in what we deliver.</span>
+        </h2>
+        <p class="lede reveal delay-2" data-i18n="contact.lede">We respond personally to every enquiry. Expect a reply within two business days.</p>
+        <div class="coords reveal delay-3">
+          <div class="row"><span class="label">Office</span><span class="value">Cours de Rive 4, 1204 Geneva, Switzerland</span></div>
+          <div class="row"><span class="label">Phone</span><span class="value"><a href="tel:+41228191555">+41 22 819 15 55</a></span></div>
+          <div class="row"><span class="label">Email</span><span class="value"><a href="mailto:contact@safandco.com">contact@safandco.com</a></span></div>
+          <div class="row"><span class="label">Network</span><span class="value"><a href="https://www.linkedin.com/company/saf-co-financial-services/" target="_blank" rel="noreferrer">LinkedIn ↗</a></span></div>
+        </div>
+      </div>
+      <form class="form reveal delay-2" id="contact-form" novalidate>
+        <div class="row">
+          <div class="field"><label for="firstname" data-i18n="contact.form.first">First name</label><input type="text" id="firstname" name="firstname" autocomplete="given-name" required></div>
+          <div class="field"><label for="lastname" data-i18n="contact.form.last">Last name</label><input type="text" id="lastname" name="lastname" autocomplete="family-name" required></div>
+        </div>
+        <div class="field"><label for="email" data-i18n="contact.form.email">Email</label><input type="email" id="email" name="email" autocomplete="email" required></div>
+        <div class="field"><label for="message" data-i18n="contact.form.message">Message</label><textarea id="message" name="message" rows="4"></textarea></div>
+        <div class="form-submit">
+          <button type="submit" class="btn"><span data-i18n="contact.form.submit">Start a conversation</span><span class="arrow">→</span></button>
+          <span class="form-notice" data-i18n="contact.form.notice">Confidential · No mailing list</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo-mark">SAF<span class="amp">&amp;</span>CO</div>
+      <p data-i18n="footer.tagline">Independent wealth management. Geneva. FINMA-regulated. Calm. Disciplined. Fully accountable.</p>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="footer.site">Site</h5>
+      <ul>
+        <li><a href="#people" data-i18n="nav.people">The Firm</a></li>
+        <li><a href="#governance" data-i18n="nav.governance">Governance</a></li>
+        <li><a href="#performance" data-i18n="nav.approach">Approach</a></li>
+        <li><a href="#insights" data-i18n="nav.insights">Insights</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="footer.legal">Legal</h5>
+      <ul>
+        <li><a href="legal.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+        <li><a href="legal.html#legal" data-i18n="footer.notice">Legal Notice</a></li>
+        <li><a href="legal.html#cookies" data-i18n="footer.cookies">Cookie Policy</a></li>
+        <li><a href="legal.html#finma" data-i18n="footer.finma">FINMA Status</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h5 data-i18n="footer.contact">Contact</h5>
+      <ul>
+        <li>Cours de Rive 4</li><li>1204 Geneva</li><li>Switzerland</li>
+        <li style="padding-top:10px;"><a href="tel:+41228191555">+41 22 819 15 55</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© SAF&amp;CO 2026 — <span data-i18n="footer.rights">All rights reserved</span></span>
+    <span class="finma-badge"><span class="dot"></span> <span data-i18n="footer.finmastatus">FINMA-regulated · Asset Manager</span></span>
+    <div class="legal">
+      <a href="legal.html" data-i18n="footer.privacy">Privacy Policy</a>
+      <a href="legal.html#legal" data-i18n="footer.notice">Legal Notice</a>
+    </div>
+  </div>
+</footer>
+<script>
+window.I18N = {
+  en: {
+    'nav.services': 'Services','nav.people': 'The Firm','nav.governance': 'Governance','nav.approach': 'Approach','nav.insights': 'Insights','nav.contact': 'Contact',
+    'hero.eyebrow': 'SAF&CO · Geneva · 30+ years of legacy','hero.title.1': 'Serious wealth management','hero.title.2': 'requires ','hero.title.3': 'discipline','hero.title.4': ', not noise.','hero.lede': 'We manage international wealth through consistent decisions and clear responsibility.','hero.meta.1': 'Calm.','hero.meta.2': 'Disciplined.','hero.meta.3': 'Fully accountable.','hero.scroll': 'Scroll','hero.services.1': 'Investments','hero.services.2': 'Wealth Planning & Structuring','hero.services.3': 'Family Office',
+    'svc.eyebrow': '01 — What we do','svc.pillar.1': 'Investments','svc.pillar.2a': 'Wealth Planning','svc.pillar.2b': 'Structuring','svc.pillar.3': 'Family Office','svc.prose.1': 'Three disciplines, one practice — shaped tailor-made to the life you have built and the one you intend to leave behind.','svc.prose.2': 'The point of working with us is not a product. It is the quiet certainty that your wealth is held with intention — managed, structured and watched over so that what you have can endure, prosper, and free your mind to live the rest.','svc.foot.tag': 'For those who measure success in','svc.foot.w1': 'tranquility','svc.foot.w2': 'continuity','svc.foot.w3': 'prosperity',
+    'band.tag': 'Geneva · Lake & Old Town','band.caption': 'From Cours de Rive, the lake, the Jet d’Eau and the spires of Saint-Pierre — the city we have called home for over thirty years.',
+    'people.eyebrow': '02 — The Firm','people.title.1': 'Built over time, ','people.title.2': 'not engineered overnight','people.title.3': '.','people.lede': 'Saf & Co was founded by senior bankers with deep roots in Geneva private banking. We never grow faster than the trust placed in us.','people.partners.label': 'Founding Partners','people.partners.p1.role': 'Founding Partner','people.partners.p2.role': 'Founding Partner · Board Member','people.board.label': 'Board of Directors','people.board.b1.role': 'Chairman of the Board · Independent Director','people.board.b1.bio': '[ Two-line biography — career highlights, current mandates, and what he brings to the board’s oversight. ]','people.board.b2.role': 'Independent Director','people.board.b2.bio': '[ Two-line biography — career highlights, current mandates, and what he brings to the board’s oversight. ]','people.board.b3.role': 'Independent Director','people.board.b3.bio': '[ Two-line biography — career highlights, current mandates, and what he brings to the board’s oversight. ]','people.footer': 'A small firm, by design. Senior people, clear roles, shared accountability.',
+    'perf.eyebrow': '04 — Performance & Discipline','perf.title.1': 'Performance is a ','perf.title.2': 'consequence','perf.title.3': ',\nnot an isolated objective.','perf.quote': 'What some call luck is often the result of consistency, monitoring and discipline.','perf.body.1': 'Markets fluctuate. Cycles change. Emotions destroy capital.','perf.body.2': 'Our role is to make sound decisions, consistently, with risks we understand and control.','perf.principle.1': 'Discipline over timing.','perf.principle.2': 'Risk management over narratives.','perf.principle.3': 'Consistency over short-term reactions.','perf.latam': 'We have developed particular expertise in serving clients from Latin America navigating international markets.',
+    'resp.eyebrow': '05 — Responsibility & Client Interest','resp.title.1': 'Full responsibility means full ','resp.title.2': 'commitment','resp.title.3': '.','resp.block1.title': 'We decide. We assume. We answer.','resp.block1.body': 'We make decisions, we assume them, and we answer for them — across all market conditions. No deflection. No hedging behind market noise.','resp.block2.title': "Solely in our clients' interest.",'resp.block2.body': 'We invest on behalf of our clients — and solely in their interest. No retrocessions kept silently. No conflicts left unspoken.','resp.block3.title': 'Fundamentally traditional.','resp.block3.body': 'Disciplined allocation, risk management, long-term thinking. Our default is the proven, not the popular.','resp.block4.title': 'Opportunistic.','resp.block4.body': 'We seek out investment opportunities others overlook — across asset classes, geographies and structures — and act only when conviction, risk and reward align.',
+    'gov.eyebrow': '03 — Governance','gov.title.1': 'Our governance is designed to ','gov.title.2': 'protect clients','gov.title.3': '.','gov.card1.title': 'Regulatory framework','gov.card1.lede': 'External, independent, continuous.','gov.card1.li1': 'Regulated as an asset manager (FINMA)','gov.card1.li2': 'Independent risk & compliance oversight','gov.card1.li3': 'Regular prudential and financial audits','gov.card1.li4': 'Decisions are overseen, challenged and verified','gov.card2.title': 'Firm & structure','gov.card2.lede': 'Senior people, clear roles, shared accountability.','gov.card2.li1': 'A small firm of senior partners','gov.card2.li2': 'Clear roles, shared responsibility','gov.card2.li3': 'Senior investment professionals only','gov.card2.li4': 'Direct access to decision-makers, always','gov.history.label': 'A track record','gov.history.body.1': 'Saf & Co was ','gov.history.body.2': 'built over time','gov.history.body.3': ' — not engineered overnight. Long-term thinking is not a slogan. It is a culture.','gov.pillar1.title': 'Investment Committee','gov.pillar1.body': 'Every allocation is debated, challenged and signed off by an experienced committee of senior partners. No solo calls, no shortcuts.','gov.pillar2.title': 'Independently watched','gov.pillar2.body': 'FINMA-regulated, audited by BDO, and supervised in risk and compliance by Claritis. We invite the scrutiny.','gov.pillar3.title': 'Direct access, always','gov.pillar3.body': 'No layers. No call centres. The person managing your wealth is the person who answers when you call.',
+    'ins.eyebrow': '06 — Insights · Monthly Letter','ins.title.1': 'Our ','ins.title.2': 'thinking','ins.title.3': ', this month.','ins.lede': 'A regular analysis of markets, risks and opportunities — written for clients who think long-term.','ins.latest.date': 'April 2026','ins.latest.tag': 'Macro & Investments','ins.latest.t1': 'When the cycle turns: ','ins.latest.t2': 'positioning for what we do not yet see.','ins.modal.eyebrow': 'Monthly Letter · April 2026','ins.modal.t1': 'A few details before you ','ins.modal.t2': 'read on','ins.modal.t3': '.','ins.modal.first': 'First name','ins.modal.last': 'Last name','ins.modal.email': 'Email','ins.modal.optin.line': 'Send me future monthly letters by email.','ins.modal.optin.help': 'Leave unchecked and you will not be added to any mailing list. We will only send you this letter, once.','ins.modal.submit': 'Send me the letter','ins.modal.notice': 'Confidential · We never share your details',
+    'contact.eyebrow': '07 — Start a conversation','contact.title.1': 'We are ','contact.title.2': 'selective','contact.title.3': ' in how we work,\nand ','contact.title.4': 'precise','contact.title.5': ' in what we deliver.','contact.lede': 'We respond personally to every enquiry. Expect a reply within two business days.','contact.form.first': 'First name','contact.form.last': 'Last name','contact.form.email': 'Email','contact.form.message': 'Message','contact.form.submit': 'Start a conversation','contact.form.notice': 'Confidential · No mailing list',
+    'footer.tagline': 'Independent wealth management. Geneva. FINMA-regulated. Calm. Disciplined. Fully accountable.','footer.site': 'Site','footer.legal': 'Legal','footer.contact': 'Contact','footer.privacy': 'Privacy Policy','footer.notice': 'Legal Notice','footer.cookies': 'Cookie Policy','footer.finma': 'FINMA Status','footer.rights': 'All rights reserved','footer.finmastatus': 'FINMA-regulated · Asset Manager'
+  },
+  pt: {
+    'nav.services': 'Serviços','nav.people': 'A Firma','nav.governance': 'Governança','nav.approach': 'Abordagem','nav.insights': 'Análises','nav.contact': 'Contato',
+    'hero.eyebrow': 'SAF&CO · Genebra · 30+ anos de legado','hero.title.1': 'Gestão patrimonial séria','hero.title.2': 'exige ','hero.title.3': 'disciplina','hero.title.4': ', não barulho.','hero.lede': 'Gerimos patrimônios internacionais através de decisões consistentes e responsabilidade clara.','hero.meta.1': 'Calma.','hero.meta.2': 'Disciplinada.','hero.meta.3': 'Plenamente responsável.','hero.scroll': 'Role','hero.services.1': 'Investimentos','hero.services.2': 'Planejamento e Estruturação Patrimonial','hero.services.3': 'Family Office',
+    'svc.eyebrow': '01 — O que fazemos','svc.pillar.1': 'Investimentos','svc.pillar.2a': 'Planejamento','svc.pillar.2b': 'Estruturação','svc.pillar.3': 'Family Office','svc.prose.1': 'Três disciplinas, uma só prática — moldadas sob medida para a vida que você construiu e para aquela que pretende deixar.','svc.prose.2': 'O sentido de trabalhar conosco não é um produto. É a serena certeza de que seu patrimônio é cuidado com intenção.','svc.foot.tag': 'Para quem mede o sucesso em','svc.foot.w1': 'tranquilidade','svc.foot.w2': 'continuidade','svc.foot.w3': 'prosperidade',
+    'band.tag': 'Genebra · Lago e Cidade Velha','band.caption': 'De Cours de Rive, o lago, o Jet d’Eau e as torres de Saint-Pierre — a cidade que chamamos de casa há mais de trinta anos.',
+    'people.eyebrow': '02 — A Firma','people.title.1': 'Construída ao longo do tempo, ','people.title.2': 'não improvisada da noite para o dia','people.title.3': '.','people.lede': 'A Saf & Co foi fundada por banqueiros sênior com profundas raízes no private banking de Genebra.','people.partners.label': 'Sócios Fundadores','people.partners.p1.role': 'Sócio Fundador','people.partners.p2.role': 'Sócio Fundador · Membro do Conselho','people.board.label': 'Conselho de Administração','people.board.b1.role': 'Presidente do Conselho · Conselheiro Independente','people.board.b1.bio': '[ Biografia em duas linhas — trajetória, mandatos atuais e o que ele traz à supervisão do conselho. ]','people.board.b2.role': 'Conselheiro Independente','people.board.b2.bio': '[ Biografia em duas linhas. ]','people.board.b3.role': 'Conselheiro Independente','people.board.b3.bio': '[ Biografia em duas linhas. ]','people.footer': 'Uma firma pequena, por escolha. Pessoas sênior, papéis claros, responsabilidade compartilhada.',
+    'perf.eyebrow': '04 — Performance e Disciplina','perf.title.1': 'A performance é uma ','perf.title.2': 'consequência','perf.title.3': ',\nnão um objetivo isolado.','perf.quote': 'O que alguns chamam de sorte é, muitas vezes, o resultado de consistência, monitoramento e disciplina.','perf.body.1': 'Os mercados oscilam. Os ciclos mudam. As emoções destroem capital.','perf.body.2': 'Nosso papel é tomar decisões sólidas, com consistência, assumindo riscos que entendemos e controlamos.','perf.principle.1': 'Disciplina antes do timing.','perf.principle.2': 'Gestão de risco antes das narrativas.','perf.principle.3': 'Consistência antes de reações de curto prazo.','perf.latam': 'Desenvolvemos uma expertise particular ao atender clientes da América Latina que navegam pelos mercados internacionais.',
+    'resp.eyebrow': '05 — Responsabilidade e Interesse do Cliente','resp.title.1': 'Plena responsabilidade significa pleno ','resp.title.2': 'comprometimento','resp.title.3': '.','resp.block1.title': 'Decidimos. Assumimos. Respondemos.','resp.block1.body': 'Tomamos as decisões, as assumimos e respondemos por elas.','resp.block2.title': 'Apenas no interesse dos clientes.','resp.block2.body': 'Investimos em nome dos nossos clientes — e exclusivamente em seu interesse.','resp.block3.title': 'Fundamentalmente tradicionais.','resp.block3.body': 'Alocação disciplinada, gestão de risco, pensamento de longo prazo.','resp.block4.title': 'Oportunistas.','resp.block4.body': 'Buscamos oportunidades de investimento que outros não enxergam.',
+    'gov.eyebrow': '03 — Governança','gov.title.1': 'Nossa governança foi concebida para ','gov.title.2': 'proteger os clientes','gov.title.3': '.','gov.card1.title': 'Quadro regulatório','gov.card1.lede': 'Externo, independente, contínuo.','gov.card1.li1': 'Regulada como gestora de ativos (FINMA)','gov.card1.li2': 'Supervisão independente de risco e compliance','gov.card1.li3': 'Auditorias prudenciais e financeiras regulares','gov.card1.li4': 'Decisões supervisionadas, contestadas e verificadas','gov.card2.title': 'Firma e estrutura','gov.card2.lede': 'Profissionais sênior, papéis claros, responsabilidade compartilhada.','gov.card2.li1': 'Uma pequena firma de sócios sênior','gov.card2.li2': 'Papéis claros, responsabilidade compartilhada','gov.card2.li3': 'Apenas profissionais sênior de investimento','gov.card2.li4': 'Acesso direto aos tomadores de decisão, sempre','gov.history.label': 'Um histórico','gov.history.body.1': 'A Saf & Co foi ','gov.history.body.2': 'construída ao longo do tempo','gov.history.body.3': ' — não montada da noite para o dia.','gov.pillar1.title': 'Comitê de Investimentos','gov.pillar1.body': 'Cada alocação é debatida, contestada e aprovada por um comitê experiente.','gov.pillar2.title': 'Supervisionados de forma independente','gov.pillar2.body': 'Regulados pela FINMA, auditados pela BDO e supervisionados em risco e compliance pela Claritis.','gov.pillar3.title': 'Acesso direto, sempre','gov.pillar3.body': 'Sem camadas. Quem gere o seu patrimônio é quem atende quando você liga.',
+    'ins.eyebrow': '06 — Análises · Carta Mensal','ins.title.1': 'Nosso ','ins.title.2': 'pensamento','ins.title.3': ', este mês.','ins.lede': 'Uma análise regular de mercados, riscos e oportunidades.','ins.latest.date': 'Abril 2026','ins.latest.tag': 'Macro & Investimentos','ins.latest.t1': 'Quando o ciclo vira: ','ins.latest.t2': 'posicionando-se para o que ainda não vemos.','ins.modal.eyebrow': 'Carta Mensal · Abril 2026','ins.modal.t1': 'Alguns detalhes antes de ','ins.modal.t2': 'continuar','ins.modal.t3': '.','ins.modal.first': 'Nome','ins.modal.last': 'Sobrenome','ins.modal.email': 'Email','ins.modal.optin.line': 'Enviar-me as próximas cartas mensais por email.','ins.modal.optin.help': 'Deixe desmarcado e você não será incluído em nenhuma lista.','ins.modal.submit': 'Enviar-me a carta','ins.modal.notice': 'Confidencial · Nunca compartilhamos seus dados',
+    'contact.eyebrow': '07 — Inicie uma conversa','contact.title.1': 'Somos ','contact.title.2': 'seletivos','contact.title.3': ' na forma como trabalhamos,\ne ','contact.title.4': 'precisos','contact.title.5': ' no que entregamos.','contact.lede': 'Respondemos pessoalmente a cada solicitação. Espere uma resposta em até dois dias úteis.','contact.form.first': 'Nome','contact.form.last': 'Sobrenome','contact.form.email': 'Email','contact.form.message': 'Mensagem','contact.form.submit': 'Iniciar uma conversa','contact.form.notice': 'Confidencial · Sem mailing list',
+    'footer.tagline': 'Gestão patrimonial independente. Genebra. Regulada pela FINMA.','footer.site': 'Site','footer.legal': 'Legal','footer.contact': 'Contato','footer.privacy': 'Política de Privacidade','footer.notice': 'Aviso Legal','footer.cookies': 'Política de Cookies','footer.finma': 'Status FINMA','footer.rights': 'Todos os direitos reservados','footer.finmastatus': 'Regulada pela FINMA · Gestora de Ativos'
+  }
+};
+</script>
+<script>
+// SAF&CO — main interactions
+(function(){
+  const nav = document.getElementById('nav');
+  const sections = document.querySelectorAll('section.panel');
+  function updateNav(){
+    const y = window.scrollY;
+    nav.classList.toggle('scrolled', y > 40);
+    let onDark = false;
+    sections.forEach(s => {
+      const r = s.getBoundingClientRect();
+      if (r.top <= 80 && r.bottom > 80) onDark = s.classList.contains('on-dark');
+    });
+    nav.classList.toggle('on-dark', onDark);
+  }
+  window.addEventListener('scroll', updateNav, { passive: true });
+  updateNav();
+
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+  reveals.forEach(el => io.observe(el));
+
+  const langBtns = document.querySelectorAll('.lang-btn');
+  function setLang(lang){
+    const dict = (window.I18N || {})[lang] || {};
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (dict[key] !== undefined) el.textContent = dict[key];
+    });
+    langBtns.forEach(b => {
+      const isActive = b.dataset.lang === lang;
+      b.classList.toggle('active', isActive);
+      b.setAttribute('aria-pressed', String(isActive));
+    });
+    try { localStorage.setItem('safco_lang', lang); } catch(e){}
+  }
+  langBtns.forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+  let initialLang = 'en';
+  try {
+    const saved = localStorage.getItem('safco_lang');
+    if (saved === 'en' || saved === 'pt') initialLang = saved;
+    else if ((navigator.language || '').toLowerCase().startsWith('pt')) initialLang = 'pt';
+  } catch(e){}
+  setLang(initialLang);
+
+  const form = document.getElementById('contact-form');
+  if (form){
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const fn = form.firstname.value.trim(), ln = form.lastname.value.trim(), em = form.email.value.trim();
+      if (!fn || !ln || !em){ showNotice('Please fill name and email.', 'warn'); return; }
+      const btn = form.querySelector('.btn');
+      const original = btn.innerHTML;
+      btn.innerHTML = '<span>Sending\u2026</span>'; btn.disabled = true;
+      setTimeout(() => {
+        btn.innerHTML = '<span>Thank you \u2014 we will be in touch.</span>';
+        setTimeout(() => { btn.innerHTML = original; btn.disabled = false; form.reset(); }, 3500);
+      }, 800);
+    });
+  }
+  function showNotice(msg, level){
+    const n = document.querySelector('.form-notice');
+    if (!n) return;
+    const prev = n.textContent; n.textContent = msg;
+    n.style.color = level === 'warn' ? '#E0A857' : '';
+    setTimeout(() => { n.textContent = prev; n.style.color = ''; }, 2400);
+  }
+
+  const letterModal = document.getElementById('letter-modal');
+  const letterForm = document.getElementById('letter-form');
+  const openLetterBtn = document.getElementById('open-letter-form');
+  if (letterModal && openLetterBtn) {
+    let lastFocus = null;
+    const openModal = () => {
+      lastFocus = document.activeElement;
+      letterModal.hidden = false;
+      document.documentElement.style.overflow = 'hidden';
+      setTimeout(() => { const first = letterModal.querySelector('input'); if (first) first.focus(); }, 200);
+    };
+    const closeModal = () => {
+      letterModal.hidden = true;
+      document.documentElement.style.overflow = '';
+      if (lastFocus && lastFocus.focus) lastFocus.focus();
+    };
+    openLetterBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+    letterModal.querySelectorAll('[data-close-modal]').forEach(el => el.addEventListener('click', closeModal));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !letterModal.hidden) closeModal(); });
+    if (letterForm) {
+      letterForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fn = letterForm.firstname.value.trim(), ln = letterForm.lastname.value.trim(), em = letterForm.email.value.trim();
+        if (!fn || !ln || !em) return;
+        const btn = letterForm.querySelector('button[type="submit"]');
+        const original = btn.innerHTML;
+        btn.innerHTML = '<span>Sending\u2026</span>'; btn.disabled = true;
+        setTimeout(() => {
+          btn.innerHTML = '<span>Sent \u2014 check your inbox \u2192</span>';
+          setTimeout(() => { btn.innerHTML = original; btn.disabled = false; letterForm.reset(); closeModal(); }, 2200);
+        }, 700);
+      });
+    }
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', (e) => {
+      const id = a.getAttribute('href');
+      if (id.length < 2) return;
+      const target = document.querySelector(id);
+      if (target){ e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+  const heroMark = document.querySelector('#hero .hero-mark');
+  const scrollLine = document.querySelector('#hero .scroll-indicator');
+  const heroSection = document.getElementById('hero');
+  let rafId = null, pointerX = 0, pointerY = 0, targetX = 0, targetY = 0, scrollYPos = 0;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function onPointerMove(e){
+    if (!heroSection) return;
+    const r = heroSection.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > window.innerHeight) return;
+    targetX = (e.clientX / window.innerWidth - 0.5) * 2;
+    targetY = (e.clientY / window.innerHeight - 0.5) * 2;
+    schedule();
+  }
+  function onScroll(){ scrollYPos = window.scrollY; schedule(); }
+  function schedule(){ if (rafId) return; rafId = requestAnimationFrame(tick); }
+  function tick(){
+    rafId = null;
+    pointerX += (targetX - pointerX) * 0.06;
+    pointerY += (targetY - pointerY) * 0.06;
+    if (heroMark){
+      const px = pointerX * 28, py = pointerY * 18, sy = scrollYPos * -0.18;
+      heroMark.style.transform = `translate3d(${px}px, calc(-50% + ${py + sy}px), 0)`;
+    }
+    if (scrollLine){
+      const driftX = pointerX * 6, fade = Math.max(0, 1 - scrollYPos / 400), shiftY = scrollYPos * 0.25;
+      scrollLine.style.transform = `translateX(calc(-50% + ${driftX}px)) translateY(${shiftY}px)`;
+      scrollLine.style.opacity = String(fade);
+    }
+    if (Math.abs(targetX - pointerX) > 0.001 || Math.abs(targetY - pointerY) > 0.001) schedule();
+  }
+  if (!reduceMotion) {
+    window.addEventListener('mousemove', onPointerMove, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    tick();
+  }
+})();
+</script>
+</html>
