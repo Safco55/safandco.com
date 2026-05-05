@@ -208,6 +208,36 @@ footer{background:var(--navy-deep);color:var(--muted-light);padding:64px var(--g
 @media(max-width:600px){.lm-form .row{grid-template-columns:1fr}.lm-dialog{padding:32px 24px}}
 @media(max-width:560px){.footer-inner{grid-template-columns:1fr}.hero-meta{flex-wrap:wrap;gap:16px;margin-top:48px}.form-submit{flex-direction:column;align-items:flex-start}.form{padding:28px 22px}}
 
+
+/* Privacy Modal */
+.privacy-modal[hidden]{display:none}
+.privacy-modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:24px}
+.privacy-dialog{position:relative;background:var(--paper);width:min(680px,100%);max-height:calc(100vh - 48px);overflow-y:auto;padding:clamp(32px,4vw,56px);border-top:2px solid var(--gold);box-shadow:0 32px 80px -20px rgba(0,0,0,0.4)}
+.privacy-header{margin-bottom:24px}
+.privacy-lang-toggle{display:inline-flex;align-items:center;border:1px solid var(--line-strong);border-radius:999px;padding:2px;margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:0.1em}
+.privacy-lang-btn{background:transparent;border:none;color:var(--navy);cursor:pointer;padding:4px 12px;border-radius:999px;font-family:inherit;font-size:inherit;letter-spacing:inherit;transition:all 0.2s}
+.privacy-lang-btn.active{background:var(--navy);color:var(--ivory)}
+.privacy-body{font-family:var(--serif);font-size:16px;line-height:1.7;color:var(--navy)}
+.privacy-body h4{font-family:var(--serif);font-size:18px;font-weight:500;margin:28px 0 8px;color:var(--navy)}
+.privacy-body p{margin-bottom:14px}
+.privacy-body ul{margin:8px 0 14px 20px}
+.privacy-body ul li{margin-bottom:6px;font-size:15px}
+.privacy-date{color:var(--muted);font-size:13px;margin-top:32px;padding-top:16px;border-top:1px solid var(--line)}
+
+/* FINMA Modal */
+.finma-modal[hidden]{display:none}
+.finma-modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;padding:24px}
+
+/* Cookie Banner */
+.cookie-banner{position:fixed;bottom:0;left:0;right:0;z-index:300;background:var(--navy-deep);color:var(--ivory);padding:16px var(--gutter);border-top:1px solid var(--line-light);transform:translateY(100%);transition:transform 0.4s ease}
+.cookie-banner.visible{transform:translateY(0)}
+.cookie-banner[hidden]{display:none}
+.cookie-inner{max-width:var(--container);margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+.cookie-text{font-size:13px;line-height:1.5;color:var(--muted-light);max-width:70ch}
+.cookie-text a{color:var(--gold-soft);border-bottom:1px solid var(--gold-soft)}
+.cookie-accept{padding:10px 24px;font-size:10px}
+@media(max-width:600px){.cookie-inner{flex-direction:column;align-items:flex-start}}
+
 </style>
 </head>
 <body data-mood="midnight" data-voice="editorial" data-density="standard">
@@ -234,7 +264,7 @@ footer{background:var(--navy-deep);color:var(--muted-light);padding:64px var(--g
   <div class="hero-mark" aria-hidden="true">&amp;</div>
   <div class="container hero-inner">
     <div class="hero-content">
-      <div class="eyebrow reveal in" data-i18n="hero.eyebrow">SAF&amp;CO · Geneva · 30+ years of legacy</div>
+      <div class="eyebrow reveal in" data-i18n="hero.eyebrow">SAF&amp;CO · Geneva · 30+ years of legacy · FINMA Regulated</div>
       <h1 class="headline-xl reveal delay-1 in">
         <span data-i18n="hero.title.1">Serious wealth management</span><br>
         <span data-i18n="hero.title.2">requires </span><em data-i18n="hero.title.3">discipline</em><span data-i18n="hero.title.4">, not noise.</span>
@@ -607,10 +637,8 @@ not an isolated objective.</span>
     <div class="footer-col">
       <h5 data-i18n="footer.legal">Legal</h5>
       <ul>
-        <li><a href="legal.html" data-i18n="footer.privacy">Privacy Policy</a></li>
-        <li><a href="legal.html#legal" data-i18n="footer.notice">Legal Notice</a></li>
-        <li><a href="legal.html#cookies" data-i18n="footer.cookies">Cookie Policy</a></li>
-        <li><a href="legal.html#finma" data-i18n="footer.finma">FINMA Status</a></li>
+        <li><a href="#" id="open-privacy-modal" data-i18n="footer.privacy">Privacy Policy</a></li>
+        <li><a href="#" id="open-finma-modal" data-i18n="footer.finma">FINMA Status</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -814,4 +842,198 @@ window.I18N = {
   }
 })();
 </script>
+
+<!-- PRIVACY POLICY MODAL -->
+<div class="privacy-modal" id="privacy-modal" role="dialog" aria-modal="true" aria-labelledby="privacy-modal-title" hidden>
+  <div class="lm-backdrop" data-close-privacy=""></div>
+  <div class="privacy-dialog" role="document">
+    <button type="button" class="lm-close" aria-label="Close" data-close-privacy="">&times;</button>
+    <div class="privacy-header">
+      <div class="lm-eyebrow">SAF&amp;CO &middot; Privacy Policy</div>
+      <h3 class="lm-title" id="privacy-modal-title">Politique de protection des donn&eacute;es</h3>
+      <div class="privacy-lang-toggle" role="tablist">
+        <button class="privacy-lang-btn active" data-lang="fr">FR</button>
+        <button class="privacy-lang-btn" data-lang="en">EN</button>
+      </div>
+    </div>
+    <div class="privacy-body">
+      <div class="privacy-content" data-privacy-lang="fr">
+        <p>Cette politique de protection des donn&eacute;es d&eacute;crit comment SAF &amp; Co Financial Services SA (&laquo;&nbsp;SAF&nbsp;&raquo;) traite les donn&eacute;es personnelles qu&rsquo;elle est susceptible de recevoir en tant que responsable du traitement. Toute modification ou mise &agrave; jour est communiqu&eacute;e aux clients par le biais du site web&nbsp;: https://www.safandco.com/</p>
+        <h4>1. Responsable du traitement</h4>
+        <p>SAF peut &ecirc;tre contact&eacute;e &agrave; l&rsquo;adresse suivante&nbsp;: Cours de Rive 4, 1204 Gen&egrave;ve.</p>
+        <h4>2. Type de donn&eacute;es personnelles collect&eacute;es</h4>
+        <p>Dans le cadre de ses relations d&rsquo;affaires, SAF traite notamment&nbsp;:</p>
+        <ul>
+          <li>Les donn&eacute;es d&rsquo;identification et de contact (nom, pr&eacute;nom, date de naissance, t&eacute;l&eacute;phone, adresse)</li>
+          <li>Les donn&eacute;es relatives au profil familial et professionnel</li>
+          <li>Les donn&eacute;es financi&egrave;res et fiscales</li>
+          <li>Les donn&eacute;es relatives aux interactions avec SAF</li>
+          <li>Toute autre donn&eacute;e collect&eacute;e en vertu d&rsquo;une obligation l&eacute;gale</li>
+        </ul>
+        <p>SAF ne collecte aucune donn&eacute;e personnelle par le biais de son site internet.</p>
+        <h4>3. Donn&eacute;es de tiers</h4>
+        <p>Si un client communique &agrave; SAF des donn&eacute;es personnelles de tiers, il doit s&rsquo;assurer que la personne concern&eacute;e ait &eacute;t&eacute; inform&eacute;e de cette politique.</p>
+        <h4>4. But du traitement</h4>
+        <p>SAF traite les donn&eacute;es personnelles pour fournir les services sollicit&eacute;s, satisfaire &agrave; ses obligations l&eacute;gales, ainsi qu&rsquo;en pr&eacute;sence d&rsquo;int&eacute;r&ecirc;ts l&eacute;gitimes pr&eacute;pond&eacute;rants.</p>
+        <h4>5. Communication &agrave; des tiers</h4>
+        <p>Les donn&eacute;es personnelles sont transf&eacute;r&eacute;es &agrave; des tiers lorsque n&eacute;cessaire pour ex&eacute;cuter les services demand&eacute;s. SAF se r&eacute;serve le droit de sous-traiter le traitement &agrave; des tiers li&eacute;s contractuellement &agrave; la confidentialit&eacute;.</p>
+        <h4>6. Communication &agrave; l&rsquo;&eacute;tranger</h4>
+        <p>SAF peut communiquer des donn&eacute;es personnelles &agrave; l&rsquo;&eacute;tranger pour ex&eacute;cuter son contrat, en conformit&eacute; avec les dispositions applicables.</p>
+        <h4>7. Suppression</h4>
+        <p>Les donn&eacute;es personnelles sont supprim&eacute;es lorsqu&rsquo;elles ne sont plus n&eacute;cessaires pour rendre les services.</p>
+        <h4>8. Droits des personnes concern&eacute;es</h4>
+        <p>Toute personne concern&eacute;e a le droit d&rsquo;acc&eacute;der &agrave; ses donn&eacute;es, de les faire rectifier, d&rsquo;interdire ou limiter leur traitement, et de demander leur suppression.</p>
+        <h4>9. S&eacute;curit&eacute; des donn&eacute;es</h4>
+        <p>SAF prend les mesures techniques et organisationnelles appropri&eacute;es pour prot&eacute;ger la s&eacute;curit&eacute; des donn&eacute;es personnelles.</p>
+        <h4>10. Modifications</h4>
+        <p>La pr&eacute;sente politique peut faire l&rsquo;objet d&rsquo;une modification en tout temps, prenant effet d&egrave;s leur publication sur le site internet.</p>
+        <p class="privacy-date"><em>Derni&egrave;re modification le&nbsp;: 15/10/2025</em></p>
+      </div>
+      <div class="privacy-content" data-privacy-lang="en" hidden>
+        <p>This data protection policy describes how SAF &amp; Co Financial Services SA (&ldquo;SAF&rdquo;) processes personal data it may receive as data controller. Any modification or update to this policy is communicated to clients via the website: https://www.safandco.com/</p>
+        <h4>1. Data Controller</h4>
+        <p>SAF can be contacted at: Cours de Rive 4, 1204 Geneva.</p>
+        <h4>2. Types of Personal Data Collected</h4>
+        <p>In the context of its business relationships, SAF processes in particular:</p>
+        <ul>
+          <li>Identification and contact data (name, date of birth, telephone, address)</li>
+          <li>Family and professional profile data</li>
+          <li>Financial and tax data</li>
+          <li>Data relating to interactions with SAF</li>
+          <li>Any other data SAF must collect pursuant to a legal obligation</li>
+        </ul>
+        <p>SAF does not collect any personal data through its website.</p>
+        <h4>3. Third-Party Data</h4>
+        <p>If a client communicates personal data of third parties to SAF, the client must ensure that the person concerned has been informed of this policy.</p>
+        <h4>4. Purpose of Processing</h4>
+        <p>SAF processes personal data to provide the requested services, comply with its legal obligations, and where there are overriding legitimate interests.</p>
+        <h4>5. Disclosure to Third Parties</h4>
+        <p>Personal data is transferred to third parties when necessary to execute the requested services. SAF reserves the right to outsource data processing to third parties bound by confidentiality.</p>
+        <h4>6. International Transfers</h4>
+        <p>SAF may transfer personal data abroad to perform its contract, in compliance with applicable provisions.</p>
+        <h4>7. Deletion</h4>
+        <p>Personal data is deleted when no longer necessary to provide the services.</p>
+        <h4>8. Rights of Data Subjects</h4>
+        <p>Any person concerned has the right to access, rectify, restrict or request deletion of their personal data.</p>
+        <h4>9. Data Security</h4>
+        <p>SAF takes appropriate technical and organisational measures to protect the security of personal data.</p>
+        <h4>10. Amendments</h4>
+        <p>This policy may be amended at any time, taking effect upon publication on SAF&rsquo;s website.</p>
+        <p class="privacy-date"><em>Last updated: 15/10/2025</em></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FINMA CONTACT MODAL -->
+<div class="finma-modal" id="finma-modal" role="dialog" aria-modal="true" aria-labelledby="finma-modal-title" hidden>
+  <div class="lm-backdrop" data-close-finma=""></div>
+  <div class="lm-dialog" role="document">
+    <button type="button" class="lm-close" aria-label="Close" data-close-finma="">&times;</button>
+    <div class="lm-head">
+      <div class="lm-eyebrow">SAF&amp;CO &middot; FINMA-regulated Asset Manager</div>
+      <h3 class="lm-title" id="finma-modal-title">Start a <em>conversation</em>.</h3>
+    </div>
+    <form class="lm-form" id="finma-form" novalidate>
+      <div class="row">
+        <div class="field"><label for="finma-firstname">First name</label><input type="text" id="finma-firstname" name="firstname" autocomplete="given-name" required></div>
+        <div class="field"><label for="finma-lastname">Last name</label><input type="text" id="finma-lastname" name="lastname" autocomplete="family-name" required></div>
+      </div>
+      <div class="field"><label for="finma-email">Email</label><input type="email" id="finma-email" name="email" autocomplete="email" required></div>
+      <div class="field" style="margin-top:8px;">
+        <label for="finma-message">Message</label>
+        <textarea id="finma-message" name="message" rows="4" style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--line-strong);color:var(--navy);font-family:var(--sans);font-size:15px;padding:8px 0 12px;outline:none;resize:vertical;min-height:100px;">Hi, I am interested in a business relationship with you.</textarea>
+      </div>
+      <div class="lm-submit">
+        <button type="submit" class="btn"><span>Send message</span><span class="arrow">&rarr;</span></button>
+        <span class="lm-notice">Confidential &middot; We will reply within 2 business days</span>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- COOKIE BANNER -->
+<div class="cookie-banner" id="cookie-banner">
+  <div class="cookie-inner">
+    <p class="cookie-text">We use Google Fonts for typography. No tracking or advertising cookies are used on this site. <a href="#" id="cookie-privacy-link">Privacy Policy</a></p>
+    <div class="cookie-actions">
+      <button class="cookie-accept btn" id="cookie-accept">Accept</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // Privacy Modal
+  const privacyModal = document.getElementById('privacy-modal');
+  const openPrivacyBtn = document.getElementById('open-privacy-modal');
+  if (privacyModal && openPrivacyBtn) {
+    const openPrivacy = () => { privacyModal.hidden = false; document.documentElement.style.overflow = 'hidden'; };
+    const closePrivacy = () => { privacyModal.hidden = true; document.documentElement.style.overflow = ''; };
+    openPrivacyBtn.addEventListener('click', (e) => { e.preventDefault(); openPrivacy(); });
+    privacyModal.querySelectorAll('[data-close-privacy]').forEach(b => b.addEventListener('click', closePrivacy));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !privacyModal.hidden) closePrivacy(); });
+    privacyModal.querySelectorAll('.privacy-lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        privacyModal.querySelectorAll('.privacy-lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+        privacyModal.querySelectorAll('.privacy-content').forEach(c => { c.hidden = c.dataset.privacyLang !== lang; });
+      });
+    });
+  }
+
+  // FINMA Modal
+  const finmaModal = document.getElementById('finma-modal');
+  const openFinmaBtn = document.getElementById('open-finma-modal');
+  if (finmaModal && openFinmaBtn) {
+    const openFinma = () => { finmaModal.hidden = false; document.documentElement.style.overflow = 'hidden'; };
+    const closeFinma = () => { finmaModal.hidden = true; document.documentElement.style.overflow = ''; };
+    openFinmaBtn.addEventListener('click', (e) => { e.preventDefault(); openFinma(); });
+    finmaModal.querySelectorAll('[data-close-finma]').forEach(b => b.addEventListener('click', closeFinma));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !finmaModal.hidden) closeFinma(); });
+    const finmaForm = document.getElementById('finma-form');
+    if (finmaForm) {
+      finmaForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const fn = finmaForm.firstname.value.trim(), ln = finmaForm.lastname.value.trim(), em = finmaForm.email.value.trim();
+        if (!fn || !ln || !em) return;
+        const btn = finmaForm.querySelector('.btn');
+        const original = btn.innerHTML;
+        btn.innerHTML = '<span>Sending…</span>'; btn.disabled = true;
+        setTimeout(() => {
+          btn.innerHTML = '<span>Message sent — we will be in touch.</span>';
+          setTimeout(() => { btn.innerHTML = original; btn.disabled = false; finmaForm.reset(); document.getElementById('finma-message').value = 'Hi, I am interested in a business relationship with you.'; closeFinma(); }, 3000);
+        }, 800);
+      });
+    }
+  }
+
+  // Cookie Banner
+  const banner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const cookiePrivacyLink = document.getElementById('cookie-privacy-link');
+  if (banner) {
+    try {
+      if (!localStorage.getItem('safco_cookies_accepted')) {
+        setTimeout(() => banner.classList.add('visible'), 800);
+      } else { banner.hidden = true; }
+    } catch(e) { setTimeout(() => banner.classList.add('visible'), 800); }
+    if (acceptBtn) {
+      acceptBtn.addEventListener('click', () => {
+        try { localStorage.setItem('safco_cookies_accepted', '1'); } catch(e){}
+        banner.classList.remove('visible');
+        setTimeout(() => { banner.hidden = true; }, 400);
+      });
+    }
+    if (cookiePrivacyLink) {
+      cookiePrivacyLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        const pm = document.getElementById('privacy-modal');
+        if (pm) { pm.hidden = false; document.documentElement.style.overflow = 'hidden'; }
+      });
+    }
+  }
+})();
+</script>
+
 </html>
