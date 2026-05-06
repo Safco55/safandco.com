@@ -240,6 +240,29 @@ footer{background:var(--navy-deep);color:var(--muted-light);padding:64px var(--g
 .cookie-accept{padding:10px 24px;font-size:10px}
 @media(max-width:600px){.cookie-inner{flex-direction:column;align-items:flex-start}}
 
+
+/* Smooth section colour transitions */
+section.panel {
+  transition: background-color 0.6s ease, color 0.6s ease, padding 0.4s ease;
+}
+
+/* & mark on dark sections */
+.section-mark {
+  font-family: var(--serif);
+  font-size: clamp(100px, 18vw, 240px);
+  line-height: 1;
+  color: rgba(200, 146, 58, 0.07);
+  position: absolute;
+  pointer-events: none;
+  user-select: none;
+  will-change: transform;
+  font-style: italic;
+  z-index: 0;
+}
+#people .section-mark   { bottom: 10%; left: var(--gutter); }
+#governance .section-mark { top: 20%; right: var(--gutter); }
+#contact .section-mark  { bottom: 15%; left: 40%; }
+
 </style>
 </head>
 <body data-mood="midnight" data-voice="editorial" data-density="standard">
@@ -302,10 +325,13 @@ footer{background:var(--navy-deep);color:var(--muted-light);padding:64px var(--g
       <span class="sm-sep" aria-hidden="true">—</span>
       <span class="sm-item" data-i18n="svc.pillar.3">Family Office</span>
     </h2>
-    <div class="services-prose reveal delay-2">
+    <div style="position:relative;">
+      <div class="section-mark" aria-hidden="true" style="position:absolute;right:-20px;top:50%;transform:translateY(-50%);opacity:0.06;font-size:clamp(80px,12vw,180px);color:var(--gold);">&amp;</div>
+      <div class="services-prose reveal delay-2">
       <p data-i18n="svc.prose.1">Three disciplines, one practice — shaped tailor-made to the life you have built and the one you intend to leave behind.</p>
       <p data-i18n="svc.prose.2">The point of working with us is not a product. It is the quiet certainty that your wealth is held with intention — managed, structured and watched over so that what you have can endure, prosper, and free your mind to live the rest.</p>
     </div>
+      </div>
     <div class="services-foot reveal delay-3">
       <span class="sf-tag" data-i18n="svc.foot.tag">For those who measure success in</span>
       <span class="sf-words">
@@ -320,6 +346,7 @@ footer{background:var(--navy-deep);color:var(--muted-light);padding:64px var(--g
 </section>
 
 <section class="panel on-dark" id="people">
+  <div class="section-mark" aria-hidden="true">&amp;</div>
   <div class="container">
     <div class="people-header">
       <div class="eyebrow reveal" data-i18n="people.eyebrow">02 — The Firm</div>
@@ -370,6 +397,7 @@ footer{background:var(--navy-deep);color:var(--muted-light);padding:64px var(--g
 </section>
 
 <section class="panel on-dark" id="governance">
+  <div class="section-mark" aria-hidden="true">&amp;</div>
   <div class="container">
     <div class="gov-header">
       <div class="eyebrow reveal" data-i18n="gov.eyebrow">03 — Governance</div>
@@ -436,6 +464,7 @@ footer{background:var(--navy-deep);color:var(--muted-light);padding:64px var(--g
           <span data-i18n="perf.title.1">Performance is a </span><em data-i18n="perf.title.2">consequence</em><span data-i18n="perf.title.3">,
 not an isolated objective.</span>
         </h2>
+        <div class="section-mark" aria-hidden="true" style="position:absolute;bottom:8%;right:var(--gutter);opacity:0.06;font-size:clamp(80px,14vw,200px);">&amp;</div>
         <div class="pull-quote reveal delay-2" data-i18n="perf.quote">What some call luck is often the result of consistency, monitoring and discipline.</div>
       </div>
       <div class="col-right">
@@ -459,40 +488,248 @@ not an isolated objective.</span>
   <div class="ib-figure">
     <svg class="ib-svg" viewBox="0 0 1600 520" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Geneva — Lake Geneva with the Jet d'Eau, Old Town and the Alps">
       <defs>
-        <linearGradient id="ibSky" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#0B1729"/><stop offset="55%" stop-color="#0E1B2F"/><stop offset="100%" stop-color="#101F36"/></linearGradient>
-        <linearGradient id="ibLake" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#0E1B2F"/><stop offset="100%" stop-color="#070E1B"/></linearGradient>
-        <linearGradient id="ibJet" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#C8923A" stop-opacity="0"/><stop offset="20%" stop-color="#C8923A" stop-opacity="0.45"/><stop offset="100%" stop-color="#C8923A" stop-opacity="0.85"/></linearGradient>
-        <radialGradient id="ibSun" cx="0.78" cy="0.42" r="0.18"><stop offset="0%" stop-color="#C8923A" stop-opacity="0.35"/><stop offset="100%" stop-color="#C8923A" stop-opacity="0"/></radialGradient>
-        <linearGradient id="ibFade" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#0E1B2F" stop-opacity="0"/><stop offset="80%" stop-color="#0E1B2F" stop-opacity="0"/><stop offset="100%" stop-color="#0E1B2F" stop-opacity="0.85"/></linearGradient>
+        <linearGradient id="ibSky" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stop-color="#0B1729"></stop>
+          <stop offset="55%" stop-color="#0E1B2F"></stop>
+          <stop offset="100%" stop-color="#101F36"></stop>
+        </linearGradient>
+        <linearGradient id="ibLake" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stop-color="#0E1B2F"></stop>
+          <stop offset="100%" stop-color="#070E1B"></stop>
+        </linearGradient>
+        <linearGradient id="ibJet" x1="0" x2="0" y1="1" y2="0">
+          <stop offset="0%" stop-color="#C8923A" stop-opacity="0"></stop>
+          <stop offset="20%" stop-color="#C8923A" stop-opacity="0.45"></stop>
+          <stop offset="100%" stop-color="#C8923A" stop-opacity="0.85"></stop>
+        </linearGradient>
+        <radialGradient id="ibSun" cx="0.78" cy="0.42" r="0.18">
+          <stop offset="0%" stop-color="#C8923A" stop-opacity="0.35"></stop>
+          <stop offset="100%" stop-color="#C8923A" stop-opacity="0"></stop>
+        </radialGradient>
+        <linearGradient id="ibFade" x1="0" x2="0" y1="0" y2="1">
+          <stop offset="0%" stop-color="#0E1B2F" stop-opacity="0"></stop>
+          <stop offset="80%" stop-color="#0E1B2F" stop-opacity="0"></stop>
+          <stop offset="100%" stop-color="#0E1B2F" stop-opacity="0.85"></stop>
+        </linearGradient>
       </defs>
-      <rect width="1600" height="340" fill="url(#ibSky)"/>
-      <rect width="1600" height="340" fill="url(#ibSun)"/>
-      <path d="M0,300 L120,230 L210,260 L300,200 L420,250 L520,210 L640,260 L780,220 L900,255 L1040,205 L1160,245 L1300,215 L1420,250 L1520,225 L1600,245 L1600,340 L0,340 Z" fill="#152744" opacity="0.85"/>
-      <path d="M0,310 L80,275 L180,300 L290,255 L400,290 L520,265 L660,300 L820,265 L960,295 L1100,265 L1240,295 L1380,270 L1500,295 L1600,280 L1600,340 L0,340 Z" fill="#1B304F"/>
-      <path d="M0,322 L100,305 L200,322 L320,295 L460,322 L600,300 L740,325 L880,300 L1020,325 L1180,300 L1320,322 L1460,305 L1600,322 L1600,340 L0,340 Z" fill="#22395C"/>
-      <line x1="0" y1="340" x2="1600" y2="340" stroke="#2A4670" stroke-width="1" opacity="0.7"/>
+      <!-- Sky -->
+      <rect width="1600" height="340" fill="url(#ibSky)"></rect>
+      <!-- Soft sun glow over the lake horizon -->
+      <rect width="1600" height="340" fill="url(#ibSun)"></rect>
+      <!-- Distant Alps — far range, lowest contrast -->
+      <path d="M0,300 L120,230 L210,260 L300,200 L420,250 L520,210 L640,260 L780,220 L900,255 L1040,205 L1160,245 L1300,215 L1420,250 L1520,225 L1600,245 L1600,340 L0,340 Z" fill="#152744" opacity="0.85"></path>
+      <!-- Mid range -->
+      <path d="M0,310 L80,275 L180,300 L290,255 L400,290 L520,265 L660,300 L820,265 L960,295 L1100,265 L1240,295 L1380,270 L1500,295 L1600,280 L1600,340 L0,340 Z" fill="#1B304F"></path>
+      <!-- Front range, sharper -->
+      <path d="M0,322 L100,305 L200,322 L320,295 L460,322 L600,300 L740,325 L880,300 L1020,325 L1180,300 L1320,322 L1460,305 L1600,322 L1600,340 L0,340 Z" fill="#22395C"></path>
+      <!-- Horizon line -->
+      <line x1="0" y1="340" x2="1600" y2="340" stroke="#2A4670" stroke-width="1" opacity="0.7"></line>
+      <!-- Old Town silhouette -->
       <g fill="#0A1525">
-        <rect x="0" y="316" width="1600" height="6"/>
-        <path d="M0,316 L0,300 L40,300 L40,288 L92,288 L92,302 L140,302 L140,290 L196,290 L196,300 L246,300 L246,284 L300,284 L300,294 L348,294 L348,278 L398,278 L398,288 L450,288 L450,272 L508,272 L508,286 L560,286 L560,268 L605,268 L605,278 L655,278 L655,260 L700,260 L700,272 L745,272 L745,255 L790,255 L790,248 L820,248 L820,228 L832,228 L832,205 L840,205 L840,180 L848,180 L848,205 L856,205 L856,228 L868,228 L868,248 L905,248 L905,260 L948,260 L948,272 L990,272 L990,258 L1040,258 L1040,272 L1090,272 L1090,260 L1140,260 L1140,278 L1190,278 L1190,265 L1240,265 L1240,280 L1290,280 L1290,272 L1340,272 L1340,290 L1395,290 L1395,278 L1445,278 L1445,294 L1500,294 L1500,286 L1550,286 L1550,300 L1600,300 L1600,316 Z"/>
+        <rect x="0" y="316" width="1600" height="6"></rect>
+        <path d="M0,316 L0,300 L40,300 L40,288 L92,288 L92,302 L140,302 L140,290 L196,290 L196,300 L246,300 L246,284 L300,284 L300,294 L348,294 L348,278 L398,278 L398,288 L450,288 L450,272 L508,272 L508,286 L560,286 L560,268 L605,268 L605,278 L655,278 L655,260 L700,260 L700,272 L745,272 L745,255 L790,255 L790,248 L820,248 L820,228 L832,228 L832,205 L840,205 L840,180 L848,180 L848,205 L856,205 L856,228 L868,228 L868,248 L905,248 L905,260 L948,260 L948,272 L990,272 L990,258 L1040,258 L1040,272 L1090,272 L1090,260 L1140,260 L1140,278 L1190,278 L1190,265 L1240,265 L1240,280 L1290,280 L1290,272 L1340,272 L1340,290 L1395,290 L1395,278 L1445,278 L1445,294 L1500,294 L1500,286 L1550,286 L1550,300 L1600,300 L1600,316 Z"></path>
       </g>
+      <!-- Saint-Pierre Cathedral twin spires -->
       <g fill="#0A1525" stroke="#C8923A" stroke-opacity="0.28" stroke-width="0.75">
-        <polygon points="822,180 828,156 834,180"/>
-        <polygon points="846,180 852,148 858,180"/>
-        <polygon points="836,205 840,168 844,205"/>
+        <polygon points="822,180 828,156 834,180"></polygon>
+        <polygon points="846,180 852,148 858,180"></polygon>
+        <polygon points="836,205 840,168 844,205"></polygon>
       </g>
+      <!-- Tiny windows -->
       <g fill="#C8923A" opacity="0.55">
-        <rect x="62" y="294" width="1.5" height="2"/><rect x="118" y="296" width="1.5" height="2"/><rect x="172" y="294" width="1.5" height="2"/><rect x="220" y="290" width="1.5" height="2"/><rect x="278" y="288" width="1.5" height="2"/><rect x="324" y="284" width="1.5" height="2"/><rect x="376" y="282" width="1.5" height="2"/><rect x="426" y="278" width="1.5" height="2"/><rect x="482" y="276" width="1.5" height="2"/><rect x="536" y="272" width="1.5" height="2"/><rect x="582" y="268" width="1.5" height="2"/><rect x="630" y="264" width="1.5" height="2"/><rect x="678" y="262" width="1.5" height="2"/><rect x="722" y="258" width="1.5" height="2"/><rect x="772" y="252" width="1.5" height="2"/><rect x="922" y="254" width="1.5" height="2"/><rect x="970" y="262" width="1.5" height="2"/><rect x="1018" y="266" width="1.5" height="2"/>
+        <rect x="62" y="294" width="1.5" height="2"></rect>
+        <rect x="118" y="296" width="1.5" height="2"></rect>
+        <rect x="172" y="294" width="1.5" height="2"></rect>
+        <rect x="220" y="290" width="1.5" height="2"></rect>
+        <rect x="278" y="288" width="1.5" height="2"></rect>
+        <rect x="324" y="284" width="1.5" height="2"></rect>
+        <rect x="376" y="282" width="1.5" height="2"></rect>
+        <rect x="426" y="278" width="1.5" height="2"></rect>
+        <rect x="482" y="276" width="1.5" height="2"></rect>
+        <rect x="536" y="272" width="1.5" height="2"></rect>
+        <rect x="582" y="268" width="1.5" height="2"></rect>
+        <rect x="630" y="264" width="1.5" height="2"></rect>
+        <rect x="678" y="262" width="1.5" height="2"></rect>
+        <rect x="722" y="258" width="1.5" height="2"></rect>
+        <rect x="772" y="252" width="1.5" height="2"></rect>
+        <rect x="922" y="254" width="1.5" height="2"></rect>
+        <rect x="970" y="262" width="1.5" height="2"></rect>
+        <rect x="1018" y="266" width="1.5" height="2"></rect>
       </g>
-      <rect y="340" width="1600" height="180" fill="url(#ibLake)"/>
+      <!-- Lake -->
+      <rect y="340" width="1600" height="180" fill="url(#ibLake)"></rect>
+      <!-- Lake hairlines -->
       <g stroke="#2A4670" stroke-width="0.6" fill="none">
-        <line x1="40" y1="356" x2="1560" y2="356" opacity="0.55"/><line x1="20" y1="368" x2="1580" y2="368" opacity="0.45"/><line x1="60" y1="380" x2="1540" y2="380" opacity="0.5"/><line x1="0" y1="392" x2="1600" y2="392" opacity="0.4"/><line x1="80" y1="404" x2="1520" y2="404" opacity="0.45"/>
+        <line x1="40" y1="356" x2="1560" y2="356" opacity="0.55"></line>
+        <line x1="20" y1="368" x2="1580" y2="368" opacity="0.45"></line>
+        <line x1="60" y1="380" x2="1540" y2="380" opacity="0.5"></line>
+        <line x1="0" y1="392" x2="1600" y2="392" opacity="0.4"></line>
+        <line x1="80" y1="404" x2="1520" y2="404" opacity="0.45"></line>
+        <line x1="40" y1="416" x2="1560" y2="416" opacity="0.35"></line>
+        <line x1="0" y1="430" x2="1600" y2="430" opacity="0.4"></line>
+        <line x1="120" y1="444" x2="1480" y2="444" opacity="0.3"></line>
+        <line x1="60" y1="458" x2="1540" y2="458" opacity="0.35"></line>
+        <line x1="0" y1="474" x2="1600" y2="474" opacity="0.3"></line>
+        <line x1="100" y1="490" x2="1500" y2="490" opacity="0.25"></line>
       </g>
-      <g>
-        <ellipse cx="1090" cy="356" rx="14" ry="3" fill="#C8923A" opacity="0.4"/>
-        <path d="M1086,358 Q1088,260 1086,160 Q1090,100 1094,160 Q1092,260 1094,358 Z" fill="url(#ibJet)"/>
-        <ellipse cx="1090" cy="148" rx="9" ry="14" fill="#C8923A" opacity="0.18"/>
+      <!-- Jet d'Eau v12 animated -->
+      <defs>
+        
+    <linearGradient id="v12s12" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0B1729"/><stop offset="100%" stop-color="#0E1B2F"/>
+    </linearGradient>
+    <linearGradient id="v12l12" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0E1B2F"/><stop offset="100%" stop-color="#070E1B"/>
+    </linearGradient>
+    <linearGradient id="v12col12" x1="0" x2="0" y1="1" y2="0">
+      <stop offset="0%" stop-color="#C8923A" stop-opacity="0.95"/>
+      <stop offset="70%" stop-color="#D4A356" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#E8C87A" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="v12a1z" x1="0.5" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#E8C87A" stop-opacity="0.03"/>
+      <stop offset="30%" stop-color="#D4A356" stop-opacity="0.35"/>
+      <stop offset="65%" stop-color="#C8923A" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#C8923A" stop-opacity="0.88"/>
+    </linearGradient>
+    <linearGradient id="v12a2z" x1="0.5" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#E8C87A" stop-opacity="0.01"/>
+      <stop offset="40%" stop-color="#D4A356" stop-opacity="0.28"/>
+      <stop offset="100%" stop-color="#C8923A" stop-opacity="0.62"/>
+    </linearGradient>
+    <linearGradient id="v12a3z" x1="0.5" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#E8C87A" stop-opacity="0"/>
+      <stop offset="55%" stop-color="#D4A356" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#C8923A" stop-opacity="0.42"/>
+    </linearGradient>
+    <linearGradient id="v12a4z" x1="0.5" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#E8C87A" stop-opacity="0"/>
+      <stop offset="60%" stop-color="#D4A356" stop-opacity="0.1"/>
+      <stop offset="100%" stop-color="#C8923A" stop-opacity="0.28"/>
+    </linearGradient>
+  
+      </defs>
+      <svg x="860" y="16" width="400" height="530" viewBox="0 0 400 530" overflow="visible">
+        <!-- BASE GLOW -->
+  <ellipse cx="230" cy="341" rx="22" ry="5" fill="#C8923A" opacity="0">
+    <animate attributeName="opacity" values="0;0.45;0.35" keyTimes="0;0.08;1" dur="7s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1"/>
+  </ellipse>
+
+  <!-- COLONNE -->
+  <path fill="url(#v12col12)" opacity="0">
+    <animate attributeName="d" values="M223,342 L237,342 L237,342 L223,342 Z;M223,342 L237,342 L234,62 L226,62 Z;M223,342 L237,342 L234,62 L226,62 Z" keyTimes="0;0.38;1" dur="7s" fill="freeze" calcMode="spline" keySplines="0.25 0 0.1 1;0 0 1 1"/>
+    <animate attributeName="opacity" values="0;0.42;0.42" keyTimes="0;0.04;1" dur="7s" fill="freeze"/>
+  </path>
+  <path fill="url(#v12col12)" opacity="0">
+    <animate attributeName="d" values="M226,342 L234,342 L234,342 L226,342 Z;M226,342 L234,342 L231,62 L229,62 Z;M226,342 L234,342 L231,62 L229,62 Z" keyTimes="0;0.38;1" dur="7s" fill="freeze" calcMode="spline" keySplines="0.25 0 0.1 1;0 0 1 1"/>
+    <animate attributeName="opacity" values="0;0.72;0.72" keyTimes="0;0.04;1" dur="7s" fill="freeze"/>
+  </path>
+  <line x1="230" y1="342" x2="230" y2="62" stroke="#F0D090" stroke-width="1.5" stroke-linecap="round" opacity="0">
+    <animate attributeName="y2" values="342;62;62" keyTimes="0;0.38;1" dur="7s" fill="freeze" calcMode="spline" keySplines="0.25 0 0.1 1;0 0 1 1"/>
+    <animate attributeName="opacity" values="0;0.3;0.3" keyTimes="0;0.04;1" dur="7s" fill="freeze"/>
+  </line>
+
+  <!-- ARC — 5 couches pour épaississement progressif -->
+  <clipPath id="v12arcReveal12">
+    <rect x="0" y="62" width="400" height="0">
+      <animate attributeName="height" values="0;282" keyTimes="0;1" begin="2.8s" dur="4.2s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.05 1"/>
+    </rect>
+  </clipPath>
+
+  <g clip-path="url(#v12arcReveal12)">
+    <!-- Couche 1: halo très large -->
+    <path d="M230,64 Q215,95 200,135 Q185,178 174,228 Q164,278 161,318 Q159,332 160,342" fill="none" stroke="url(#v12a4z)" stroke-width="42" stroke-linecap="round" opacity="0.28"/>
+    <!-- Couche 2: large -->
+    <path d="M230,64 Q215,95 200,135 Q185,178 174,228 Q164,278 161,318 Q159,332 160,342" fill="none" stroke="url(#v12a3z)" stroke-width="28" stroke-linecap="round" opacity="0.38"/>
+    <!-- Couche 3: medium -->
+    <path d="M230,64 Q214,92 199,132 Q184,175 173,225 Q163,275 160,316 Q158,331 160,342" fill="none" stroke="url(#v12a2z)" stroke-width="16" stroke-linecap="round" opacity="0.58"/>
+    <!-- Couche 4: fin -->
+    <path d="M230,64 Q213,91 198,130 Q183,173 172,223 Q162,273 159,314 Q157,330 159,342" fill="none" stroke="url(#v12a1z)" stroke-width="8" stroke-linecap="round" opacity="0.78"/>
+    <!-- Core bright -->
+    <path d="M230,64 Q213,91 198,130 Q183,173 172,223 Q162,273 159,314 Q157,330 159,342" fill="none" stroke="#D4A356" stroke-width="1.8" stroke-linecap="round" opacity="0.88"/>
+  </g>
+
+  <!-- GOUTTELETTES — plus nombreuses, aléatoires, dispersées des deux côtés -->
+  <g>
+    <!-- Côté extérieur proche haut -->
+    <circle cx="219" cy="86" r="0.9" fill="#E8C87A" opacity="0"><animate attributeName="opacity" values="0;0;0.5;0.5" keyTimes="0;0.50;0.60;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="224" cy="94" r="0.6" fill="#E8C87A" opacity="0"><animate attributeName="opacity" values="0;0;0.35;0.35" keyTimes="0;0.51;0.61;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="214" cy="102" r="1.3" fill="#D4A356" opacity="0"><animate attributeName="opacity" values="0;0;0.42;0.42" keyTimes="0;0.53;0.63;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="209" cy="110" r="0.7" fill="#D4A356" opacity="0"><animate attributeName="opacity" values="0;0;0.3;0.3" keyTimes="0;0.54;0.64;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="218" cy="108" r="1" fill="#D4A356" opacity="0"><animate attributeName="opacity" values="0;0;0.38;0.38" keyTimes="0;0.55;0.65;1" dur="7s" fill="freeze"/></circle>
+
+    <!-- Zone 120-160 -->
+    <circle cx="206" cy="124" r="1.4" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.4;0.4" keyTimes="0;0.57;0.67;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="212" cy="130" r="0.8" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.28;0.28" keyTimes="0;0.58;0.68;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="200" cy="138" r="1.1" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.36;0.36" keyTimes="0;0.59;0.69;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="204" cy="148" r="1.6" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.38;0.38" keyTimes="0;0.60;0.70;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="196" cy="155" r="0.9" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.3;0.3" keyTimes="0;0.61;0.71;1" dur="7s" fill="freeze"/></circle>
+
+    <!-- Zone 160-200 -->
+    <circle cx="199" cy="166" r="1.5" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.38;0.38" keyTimes="0;0.62;0.72;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="192" cy="174" r="0.8" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.26;0.26" keyTimes="0;0.63;0.73;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="205" cy="178" r="1.2" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.32;0.32" keyTimes="0;0.63;0.73;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="196" cy="185" r="1.7" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.36;0.36" keyTimes="0;0.64;0.74;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="188" cy="193" r="1" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.3;0.3" keyTimes="0;0.65;0.75;1" dur="7s" fill="freeze"/></circle>
+
+    <!-- Zone 200-240 -->
+    <circle cx="192" cy="204" r="1.4" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.36;0.36" keyTimes="0;0.66;0.76;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="184" cy="212" r="0.9" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.28;0.28" keyTimes="0;0.67;0.77;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="199" cy="216" r="1.8" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.34;0.34" keyTimes="0;0.67;0.77;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="188" cy="224" r="1.5" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.35;0.35" keyTimes="0;0.68;0.78;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="180" cy="232" r="1.1" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.3;0.3" keyTimes="0;0.69;0.79;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="195" cy="238" r="0.8" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.25;0.25" keyTimes="0;0.69;0.79;1" dur="7s" fill="freeze"/></circle>
+
+    <!-- Zone 240-280 -->
+    <circle cx="184" cy="250" r="1.6" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.34;0.34" keyTimes="0;0.71;0.81;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="176" cy="258" r="1" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.28;0.28" keyTimes="0;0.72;0.82;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="191" cy="262" r="1.9" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.32;0.32" keyTimes="0;0.72;0.82;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="181" cy="272" r="1.3" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.33;0.33" keyTimes="0;0.73;0.83;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="172" cy="278" r="0.8" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.25;0.25" keyTimes="0;0.74;0.84;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="187" cy="280" r="1.5" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.3;0.3" keyTimes="0;0.74;0.84;1" dur="7s" fill="freeze"/></circle>
+
+    <!-- Zone 280-320 — plus dense -->
+    <circle cx="179" cy="290" r="1.7" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.32;0.32" keyTimes="0;0.75;0.85;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="170" cy="298" r="1.1" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.28;0.28" keyTimes="0;0.76;0.86;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="185" cy="296" r="2" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.3;0.3" keyTimes="0;0.76;0.86;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="176" cy="308" r="1.4" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.3;0.3" keyTimes="0;0.78;0.88;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="166" cy="314" r="0.9" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.24;0.24" keyTimes="0;0.79;0.89;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="183" cy="312" r="2.1" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.28;0.28" keyTimes="0;0.79;0.89;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="173" cy="324" r="1.6" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.28;0.28" keyTimes="0;0.81;0.91;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="163" cy="330" r="1" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.22;0.22" keyTimes="0;0.82;0.92;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="180" cy="330" r="2.2" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.26;0.26" keyTimes="0;0.82;0.92;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="170" cy="338" r="1.8" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.25;0.25" keyTimes="0;0.84;0.94;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="160" cy="340" r="1.2" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.2;0.2" keyTimes="0;0.85;0.95;1" dur="7s" fill="freeze"/></circle>
+    <circle cx="177" cy="342" r="2.4" fill="#C8923A" opacity="0"><animate attributeName="opacity" values="0;0;0.24;0.24" keyTimes="0;0.85;0.95;1" dur="7s" fill="freeze"/></circle>
+  </g>
+
+  <!-- Splash base -->
+  <ellipse cx="160" cy="342" rx="18" ry="4" fill="#C8923A" opacity="0">
+    <animate attributeName="opacity" values="0;0;0.24;0.18" keyTimes="0;0.88;0.96;1" dur="7s" fill="freeze"/>
+  </ellipse>
+  <ellipse cx="160" cy="342" rx="30" ry="6" fill="#C8923A" opacity="0">
+    <animate attributeName="opacity" values="0;0;0.09;0.06" keyTimes="0;0.88;0.96;1" dur="7s" fill="freeze"/>
+  </ellipse>
+
+  <!-- Reflet colonne -->
+  <path fill="#C8923A" opacity="0">
+    <animate attributeName="d" values="M227,344 L233,344 L233,344 L227,344 Z;M227,344 L233,344 L232,390 L228,390 Z;M227,344 L233,344 L232,390 L228,390 Z" keyTimes="0;0.38;1" dur="7s" fill="freeze" calcMode="spline" keySplines="0.25 0 0.1 1;0 0 1 1"/>
+    <animate attributeName="opacity" values="0;0.07;0.07" keyTimes="0;0.38;1" dur="7s" fill="freeze"/>
+  </path>
+
+
+      </svg>
+      <!-- Old Town reflection --><!-- Old Town reflection -->
+      <g fill="#0A1525" opacity="0.55">
+        <path d="M0,340 L0,355 L1600,355 L1600,340 Z"></path>
       </g>
-      <rect width="1600" height="520" fill="url(#ibFade)"/>
+      <!-- A single sailboat -->
+      <g stroke="#C8923A" stroke-width="0.8" fill="none" opacity="0.55">
+        <line x1="380" y1="362" x2="380" y2="338"></line>
+        <path d="M380,338 L394,362 L380,362 Z" fill="#C8923A" fill-opacity="0.25" stroke="none"></path>
+      </g>
+      <!-- Foreground vignette -->
+      <rect width="1600" height="520" fill="url(#ibFade)"></rect>
     </svg>
     <div class="ib-caption">
       <span class="ib-tag" data-i18n="band.tag">Geneva · Lake &amp; Old Town</span>
@@ -589,6 +826,7 @@ not an isolated objective.</span>
 </div>
 
 <section class="panel on-dark" id="contact">
+  <div class="section-mark" aria-hidden="true">&amp;</div>
   <div class="container">
     <div class="contact-layout">
       <div class="contact-left">
@@ -1037,6 +1275,72 @@ window.I18N = {
       });
     }
   }
+})();
+</script>
+
+
+<script>
+// Parallax & marks on dark sections
+(function(){
+  const marks = document.querySelectorAll('.section-mark');
+  if (!marks.length) return;
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduceMotion) return;
+
+  let mx = 0, my = 0, tmx = 0, tmy = 0, raf = null;
+
+  window.addEventListener('mousemove', (e) => {
+    tmx = (e.clientX / window.innerWidth - 0.5) * 2;
+    tmy = (e.clientY / window.innerHeight - 0.5) * 2;
+    if (!raf) raf = requestAnimationFrame(tick);
+  }, { passive: true });
+
+  function tick() {
+    raf = null;
+    mx += (tmx - mx) * 0.07;
+    my += (tmy - my) * 0.07;
+    marks.forEach((mark, i) => {
+      const section = mark.closest('section');
+      if (!section) return;
+      const r = section.getBoundingClientRect();
+      if (r.bottom < 0 || r.top > window.innerHeight) return;
+      // Each section gets slightly different parallax depth
+      const depth = 0.6 + i * 0.15;
+      const px = mx * 38 * depth;
+      const py = my * 24 * depth;
+      mark.style.transform = `translate3d(${px}px, ${py}px, 0)`;
+    });
+    if (Math.abs(tmx - mx) > 0.001 || Math.abs(tmy - my) > 0.001) {
+      raf = requestAnimationFrame(tick);
+    }
+  }
+})();
+</script>
+
+
+
+
+
+<script>
+(function(){
+  var band = document.querySelector('.image-band');
+  if (!band) return;
+  var started = false;
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting && !started) {
+        started = true;
+        // Restart SVG animations by cloning the svg
+        var svg = document.querySelector('.ib-svg');
+        if (svg) {
+          var clone = svg.cloneNode(true);
+          svg.parentNode.replaceChild(clone, svg);
+        }
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.25 });
+  io.observe(band);
 })();
 </script>
 
