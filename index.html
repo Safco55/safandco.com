@@ -52,7 +52,7 @@ em.italic,.headline-xl em,.headline-l em,.headline-m em,.hero-content em,.pull-q
 .services-prose p{font-family:var(--serif);font-size:clamp(18px,1.6vw,23px);line-height:1.5;color:var(--navy);font-weight:400}
 .services-foot{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;font-family:var(--mono);font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);padding-top:24px;border-top:1px solid var(--line);width:100%}
 .services-foot .sf-words{display:inline-flex;align-items:center;gap:14px;color:var(--navy)}
-.services-foot .sf-words > span:not(.sf-dot){font-family:var(--serif);font-style:italic;font-size:17px;letter-spacing:0;text-transform:none;color:var(--gold)}
+.services-foot .sf-words > span:not(.sf-dot){font-family:var(--serif);font-style:italic;font-size:23px;letter-spacing:0;text-transform:none;color:var(--gold)}
 .services-foot .sf-dot{width:3px;height:3px;border-radius:50%;background:var(--gold);opacity:0.6}
 .image-band{position:relative;background:var(--navy-deep);padding:0;overflow:hidden;border-top:1px solid var(--line-light);border-bottom:1px solid var(--line-light)}
 .ib-figure{position:relative;width:100%;height:clamp(260px,42vw,520px)}.ib-svg{position:absolute;inset:0;width:100%;height:100%;display:block}
@@ -265,6 +265,140 @@ section.panel {
 #governance .section-mark { top: 20%; right: var(--gutter); }
 #contact .section-mark  { bottom: 15%; left: 40%; }
 
+
+/* ── Flip Cards ── */
+.firm-card {
+  perspective: 1000px;
+  cursor: default;
+}
+.firm-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 180px;
+  transition: transform 0.65s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.firm-card:hover .firm-card-inner,
+.firm-card.flipped .firm-card-inner {
+  transform: rotateY(180deg);
+}
+.firm-card-front,
+.firm-card-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.firm-card-back {
+  transform: rotateY(180deg);
+  background: var(--navy-deep, #0B1729);
+  border-top: 1px solid var(--gold-soft, rgba(200,146,58,0.35));
+  padding: 20px 16px;
+  justify-content: center;
+}
+.firm-card-back .firm-name {
+  font-size: 15px;
+  margin-bottom: 6px;
+  color: var(--gold);
+}
+.firm-card-back .firm-role {
+  font-size: 11px;
+  margin-bottom: 14px;
+  opacity: 0.6;
+}
+.firm-card-back .firm-bio-full {
+  font-family: var(--serif);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--ivory);
+  opacity: 0.88;
+}
+
+
+/* ── Flip Cards ── */
+.firm-flip-card {
+  perspective: 1200px;
+  cursor: default;
+  list-style: none;
+  height: 240px;
+}
+.firm-flip-inner {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  transition: transform 0.9s cubic-bezier(0.4, 0.2, 0.2, 1);
+  transform-style: preserve-3d;
+}
+.firm-flip-card:hover .firm-flip-inner,
+.firm-flip-card.flipped .firm-flip-inner {
+  transform: rotateY(180deg);
+}
+.firm-flip-front,
+.firm-flip-back {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0 16px 0 0;
+}
+.firm-flip-back {
+  transform: rotateY(180deg);
+  background: rgba(11,23,41,0.97);
+  border: 1px solid rgba(200,146,58,0.3);
+  padding: 18px 18px 18px;
+  justify-content: flex-start;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.firm-flip-back .firm-name {
+  font-size: 15px;
+  margin-bottom: 3px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+.firm-flip-back .firm-role {
+  font-size: 9.5px;
+  margin-bottom: 12px;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+.firm-bio-full {
+  font-family: var(--serif);
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ivory);
+  opacity: 0.88;
+  overflow: hidden;
+  flex: 1;
+}
+.firm-teaser {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.88);
+  margin-top: 12px;
+  flex: 1;
+}
+.firm-flip-hint {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  opacity: 0.9;
+  margin-top: 12px;
+  flex-shrink: 0;
+}
+
 </style>
 </head>
 <body data-mood="midnight" data-voice="editorial" data-density="standard">
@@ -327,16 +461,9 @@ section.panel {
       <span class="sm-sep" aria-hidden="true">—</span>
       <span class="sm-item" data-i18n="svc.pillar.3">Family Office</span>
     </h2>
-    <div style="position:relative;">
-      <div class="section-mark" aria-hidden="true" style="position:absolute;right:-20px;top:50%;transform:translateY(-50%);opacity:0.18;font-size:clamp(80px,12vw,180px);color:var(--navy);">&amp;</div>
-      <div class="services-prose reveal delay-2">
-      <p data-i18n="svc.prose.1">Three disciplines, one practice — shaped tailor-made to the life you have built and the one you intend to leave behind.</p>
-      <p data-i18n="svc.prose.2">The point of working with us is not a product. It is the quiet certainty that your wealth is held with intention — managed, structured and watched over so that what you have can endure, prosper, and free your mind to live the rest.</p>
-    </div>
-      </div>
-    <div class="services-foot reveal delay-3">
-      <span class="sf-tag" data-i18n="svc.foot.tag">For those who measure success in</span>
-      <span class="sf-words">
+    <div class="services-foot reveal delay-1">
+      <span class="sf-tag" style="font-size:1.35em;" data-i18n="svc.foot.tag">For those who measure success in</span>
+      <span class="sf-words" style="font-size:1.35em;">
         <span data-i18n="svc.foot.w1">tranquility</span>
         <span class="sf-dot" aria-hidden="true"></span>
         <span data-i18n="svc.foot.w2">continuity</span>
@@ -344,6 +471,13 @@ section.panel {
         <span data-i18n="svc.foot.w3">prosperity</span>
       </span>
     </div>
+    <div style="position:relative;">
+      <div class="section-mark" aria-hidden="true" style="position:absolute;right:-20px;top:50%;transform:translateY(-50%);opacity:0.18;font-size:clamp(80px,12vw,180px);color:var(--navy);">&amp;</div>
+      <div class="services-prose reveal delay-2">
+      <p data-i18n="svc.prose.1">Three disciplines, one practice — shaped tailor-made to the life you have built and the one you intend to leave behind.</p>
+      <p data-i18n="svc.prose.2">The point of working with us is not a product. It is the quiet certainty that your wealth is held with intention — managed, structured and watched over so that what you have can endure, prosper, and free your mind to live the rest.</p>
+    </div>
+      </div>
   </div>
 </section>
 
@@ -355,40 +489,90 @@ section.panel {
       <h2 class="headline-l reveal delay-1">
         <span data-i18n="people.title.1">Built over time, </span><em data-i18n="people.title.2">not engineered overnight</em><span data-i18n="people.title.3">.</span>
       </h2>
-      <p class="lede reveal delay-2" data-i18n="people.lede">Saf &amp; Co was founded by senior bankers with deep roots in Geneva private banking. We never grow faster than the trust placed in us.</p>
+      <p class="lede reveal delay-2" data-i18n="people.lede"><span style="font-size:1.5em;line-height:1.65;display:block;color:var(--ivory);opacity:0.9;">Saf &amp; Co was founded by senior bankers with deep roots in Geneva private banking. We never grow faster than the trust placed in us.</span></p>
     </div>
     <div class="firm-tier reveal">
       <div class="firm-tier-label" data-i18n="people.partners.label">Founding Partners</div>
       <ul class="firm-list firm-list-partners">
-        <li>
-          <span class="firm-name">Alberto Safdié</span>
-          <span class="firm-role" data-i18n="people.partners.p1.role">Founding Partner</span>
-          <p class="firm-bio">Founder of SAF&amp;CO and Chairman of the Investment Committee, Alberto brings over four decades of experience spanning Brazil, Geneva, Zurich and New York. Former partner and President of the Executive Committee at Banco Safdié, specialising in private banking for ultra high net worth clients across Latin America and Europe.</p>
+        <li class="firm-flip-card">
+          <div class="firm-flip-inner">
+            <div class="firm-flip-front">
+              <span class="firm-name">Alberto Safdié</span>
+              <span class="firm-role" data-i18n="people.partners.p1.role">Founding Partner</span>
+              <p class="firm-teaser">Four decades shaping private wealth across two continents.</p>
+              <span class="firm-flip-hint">Background &rarr;</span>
+            </div>
+            <div class="firm-flip-back">
+              <span class="firm-name">Alberto Safdié</span>
+              <span class="firm-role">Founding Partner</span>
+              <p class="firm-bio-full">Founder of SAF&amp;CO and Chairman of the Investment Committee, Alberto brings over four decades of experience spanning Brazil, Geneva, Zurich and New York. Former partner and President of the Executive Committee at Banco Safdié, specialising in private banking for ultra high net worth clients across Latin America and Europe.</p>
+            </div>
+          </div>
         </li>
-        <li>
-          <span class="firm-name">Mauricio Safdié</span>
-          <span class="firm-role" data-i18n="people.partners.p2.role">Founding Partner · Board Member</span>
-          <p class="firm-bio">Over 40 years in asset management spanning Brazil, Geneva, Zurich and New York. Mauricio co-founded SAF&amp;CO in 2007 after leading Banque Safdié&#8217;s asset management division, and brings deep expertise in alternative investments and emerging markets.</p>
+        <li class="firm-flip-card">
+          <div class="firm-flip-inner">
+            <div class="firm-flip-front">
+              <span class="firm-name">Mauricio Safdié</span>
+              <span class="firm-role" data-i18n="people.partners.p2.role">Founding Partner · Board Member</span>
+              <p class="firm-teaser">A pioneer of alternative investing in emerging markets.</p>
+              <span class="firm-flip-hint">Background &rarr;</span>
+            </div>
+            <div class="firm-flip-back">
+              <span class="firm-name">Mauricio Safdié</span>
+              <span class="firm-role">Founding Partner · Board Member</span>
+              <p class="firm-bio-full">Over 40 years in asset management spanning Brazil, Geneva, Zurich and New York. Mauricio co-founded SAF&amp;CO in 2007 after leading Banque Safdié&#8217;s asset management division, and brings deep expertise in alternative investments and emerging markets.</p>
+            </div>
+          </div>
         </li>
       </ul>
     </div>
     <div class="firm-tier reveal delay-1">
       <div class="firm-tier-label" data-i18n="people.board.label">Board of Directors</div>
       <ul class="firm-list firm-list-board">
-        <li>
-          <span class="firm-name">Dominique Paladini</span>
-          <span class="firm-role" data-i18n="people.board.b1.role">Chairman of the Board · Independent Director</span>
-          <p class="firm-bio">Four decades spanning audit, risk, compliance and executive management at REYL &amp; Cie, HSBC Private Bank and Ernst &amp; Young. A FINMA-approved auditor bringing rigorous financial and business oversight to SAF&amp;CO&#8217;s board.</p>
+        <li class="firm-flip-card">
+          <div class="firm-flip-inner">
+            <div class="firm-flip-front">
+              <span class="firm-name">Dominique Paladini</span>
+              <span class="firm-role" data-i18n="people.board.b1.role">Chairman of the Board · Independent Director</span>
+              <p class="firm-teaser">Three words: audit, governance, rigour.</p>
+              <span class="firm-flip-hint">Background &rarr;</span>
+            </div>
+            <div class="firm-flip-back">
+              <span class="firm-name">Dominique Paladini</span>
+              <span class="firm-role">Chairman of the Board · Independent Director</span>
+              <p class="firm-bio-full">Four decades spanning audit, risk, compliance and executive management at REYL &amp; Cie, HSBC Private Bank and Ernst &amp; Young. A FINMA-approved auditor bringing rigorous financial and business oversight to SAF&amp;CO&#8217;s board.</p>
+            </div>
+          </div>
         </li>
-        <li>
-          <span class="firm-name">René Sieber</span>
-          <span class="firm-role" data-i18n="people.board.b2.role">Independent Director</span>
-          <p class="firm-bio">Over thirty years in asset management, including as co-founder of a top-400 European asset manager. Professor of Finance at the University of Geneva and PhD from Geneva, with a visiting scholarship at MIT.</p>
+        <li class="firm-flip-card">
+          <div class="firm-flip-inner">
+            <div class="firm-flip-front">
+              <span class="firm-name">René Sieber</span>
+              <span class="firm-role" data-i18n="people.board.b2.role">Independent Director</span>
+              <p class="firm-teaser">Where academic finance meets real-world discipline.</p>
+              <span class="firm-flip-hint">Background &rarr;</span>
+            </div>
+            <div class="firm-flip-back">
+              <span class="firm-name">René Sieber</span>
+              <span class="firm-role">Independent Director</span>
+              <p class="firm-bio-full">Over thirty years in asset management, including as co-founder of a top-400 European asset manager. Professor of Finance at the University of Geneva and PhD from Geneva, with a visiting scholarship at MIT.</p>
+            </div>
+          </div>
         </li>
-        <li>
-          <span class="firm-name">Markus Hauser</span>
-          <span class="firm-role" data-i18n="people.board.b3.role">Independent Director</span>
-          <p class="firm-bio">Over 40 years in Geneva private banking, with senior roles at Bordier &amp; Cie, Republic National Bank of New York, and Banque Safdié. He brings deep investment committee experience and rigorous board oversight to SAF&amp;CO.</p>
+        <li class="firm-flip-card">
+          <div class="firm-flip-inner">
+            <div class="firm-flip-front">
+              <span class="firm-name">Markus Hauser</span>
+              <span class="firm-role" data-i18n="people.board.b3.role">Independent Director</span>
+              <p class="firm-teaser">Geneva private banking, from the inside.</p>
+              <span class="firm-flip-hint">Background &rarr;</span>
+            </div>
+            <div class="firm-flip-back">
+              <span class="firm-name">Markus Hauser</span>
+              <span class="firm-role">Independent Director</span>
+              <p class="firm-bio-full">Over 40 years in Geneva private banking, with senior roles at Bordier &amp; Cie, Republic National Bank of New York, and Banque Safdié. He brings deep investment committee experience and rigorous board oversight to SAF&amp;CO.</p>
+            </div>
+          </div>
         </li>
       </ul>
     </div>
@@ -1358,6 +1542,43 @@ window.I18N = {
     });
   }, { threshold: 0.25 });
   io.observe(band);
+})();
+</script>
+
+
+<script>
+// Mobile long-press flip
+(function(){
+  var cards = document.querySelectorAll('.firm-card');
+  cards.forEach(function(card){
+    var timer = null;
+    card.addEventListener('touchstart', function(e){
+      timer = setTimeout(function(){
+        card.classList.toggle('flipped');
+        timer = null;
+      }, 400);
+    }, { passive: true });
+    card.addEventListener('touchend', function(){
+      if (timer) { clearTimeout(timer); timer = null; }
+    });
+    card.addEventListener('touchmove', function(){
+      if (timer) { clearTimeout(timer); timer = null; }
+    });
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  document.querySelectorAll('.firm-flip-card').forEach(function(card){
+    var timer = null;
+    card.addEventListener('touchstart', function(){
+      timer = setTimeout(function(){ card.classList.toggle('flipped'); timer = null; }, 400);
+    }, { passive: true });
+    card.addEventListener('touchend', function(){ if(timer){ clearTimeout(timer); timer=null; } });
+    card.addEventListener('touchmove', function(){ if(timer){ clearTimeout(timer); timer=null; } });
+  });
 })();
 </script>
 
