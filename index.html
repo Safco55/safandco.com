@@ -238,6 +238,8 @@ footer{background:var(--navy-deep);color:var(--muted-light);padding:64px var(--g
 .cookie-text{font-size:13px;line-height:1.5;color:var(--muted-light);max-width:70ch}
 .cookie-text a{color:var(--gold-soft);border-bottom:1px solid var(--gold-soft)}
 .cookie-accept{padding:10px 24px;font-size:10px}
+.cookie-essential{padding:10px 24px;font-size:10px;background:transparent;border:1px solid rgba(255,255,255,0.25);color:var(--muted-light)}
+.cookie-essential:hover{background:rgba(255,255,255,0.08)}
 @media(max-width:600px){.cookie-inner{flex-direction:column;align-items:flex-start}}
 
 
@@ -326,7 +328,7 @@ section.panel {
       <span class="sm-item" data-i18n="svc.pillar.3">Family Office</span>
     </h2>
     <div style="position:relative;">
-      <div class="section-mark" aria-hidden="true" style="position:absolute;right:-20px;top:50%;transform:translateY(-50%);opacity:0.06;font-size:clamp(80px,12vw,180px);color:var(--gold);">&amp;</div>
+      <div class="section-mark" aria-hidden="true" style="position:absolute;right:-20px;top:50%;transform:translateY(-50%);opacity:0.18;font-size:clamp(80px,12vw,180px);color:var(--navy);">&amp;</div>
       <div class="services-prose reveal delay-2">
       <p data-i18n="svc.prose.1">Three disciplines, one practice — shaped tailor-made to the life you have built and the one you intend to leave behind.</p>
       <p data-i18n="svc.prose.2">The point of working with us is not a product. It is the quiet certainty that your wealth is held with intention — managed, structured and watched over so that what you have can endure, prosper, and free your mind to live the rest.</p>
@@ -609,7 +611,7 @@ not an isolated objective.</span>
     </linearGradient>
   
       </defs>
-      <svg x="895" y="50" width="340" height="450" viewBox="0 0 400 530" overflow="visible">
+      <svg x="917" y="83" width="300" height="397" viewBox="0 0 400 530" overflow="visible">
         <!-- BASE GLOW -->
   <ellipse cx="230" cy="341" rx="22" ry="5" fill="#C8923A" opacity="0">
     <animate attributeName="opacity" values="0;0.45;0.35" keyTimes="0;0.08;1" dur="7s" fill="freeze" calcMode="spline" keySplines="0.4 0 0.2 1;0 0 1 1"/>
@@ -1197,9 +1199,10 @@ window.I18N = {
 <!-- COOKIE BANNER -->
 <div class="cookie-banner" id="cookie-banner">
   <div class="cookie-inner">
-    <p class="cookie-text">We use Google Fonts for typography. No tracking or advertising cookies are used on this site. <a href="#" id="cookie-privacy-link">Privacy Policy</a></p>
+    <p class="cookie-text">This site uses essential cookies and Vercel Analytics to measure performance anonymously. No advertising or tracking cookies. <a href="#" id="cookie-privacy-link">Privacy Policy</a></p>
     <div class="cookie-actions">
-      <button class="cookie-accept btn" id="cookie-accept">Accept</button>
+      <button class="cookie-essential btn" id="cookie-essential">Essential only</button>
+      <button class="cookie-accept btn" id="cookie-accept">Accept all</button>
     </div>
   </div>
 </div>
@@ -1256,13 +1259,27 @@ window.I18N = {
   const cookiePrivacyLink = document.getElementById('cookie-privacy-link');
   if (banner) {
     try {
-      if (!localStorage.getItem('safco_cookies_accepted')) {
+      const consent = localStorage.getItem('safco_cookies_accepted');
+      if (!consent) {
         setTimeout(() => banner.classList.add('visible'), 800);
-      } else { banner.hidden = true; }
+      } else {
+        banner.hidden = true;
+        if (consent === 'essential') { window.va = function(){}; }
+      }
     } catch(e) { setTimeout(() => banner.classList.add('visible'), 800); }
     if (acceptBtn) {
       acceptBtn.addEventListener('click', () => {
-        try { localStorage.setItem('safco_cookies_accepted', '1'); } catch(e){}
+        try { localStorage.setItem('safco_cookies_accepted', 'all'); } catch(e){}
+        banner.classList.remove('visible');
+        setTimeout(() => { banner.hidden = true; }, 400);
+      });
+    }
+    const essentialBtn = document.getElementById('cookie-essential');
+    if (essentialBtn) {
+      essentialBtn.addEventListener('click', () => {
+        try { localStorage.setItem('safco_cookies_accepted', 'essential'); } catch(e){}
+        // Opt out of Vercel Analytics
+        window.va = function(){};
         banner.classList.remove('visible');
         setTimeout(() => { banner.hidden = true; }, 400);
       });
